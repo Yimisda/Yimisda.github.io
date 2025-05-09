@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Web for free souls</title>
+    <meta name="description" content="Yimisda - 一个'天选打工人'的聚集地，提供文学鉴赏、代码开发与学习项目生成服务">
+    <meta name="keywords" content="Yimisda, 文学创作, 代码开发, 数据分析, 学习项目">
+    <title>Yimisda - A Web for free souls</title>
     <!-- 引入 Bootstrap 5 样式 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入 Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- 引入 AOS 动画库 -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <!-- 自定义样式 -->
     <style>
@@ -18,48 +24,245 @@
         .hero-section {
             background: linear-gradient(135deg, #6e7fdb, #66CCFF);
             color: white;
-            padding: 80px 0;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(to bottom right, transparent 49%, #F0FFFF 50%);
         }
 
         .hero-section h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .feature-icon {
             font-size: 40px;
             color: #6e7fdb;
+            margin-bottom: 15px;
         }
 
         .service-card {
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            height: 100%;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .project-card img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: auto;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .team-member {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid #66CCFF;
+        }
+
+        .team-social a {
+            color: #6e7fdb;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .team-social a:hover {
+            color: #66CCFF;
+            transform: translateY(-3px);
+            display: inline-block;
+        }
+
+        .contact-info i {
+            color: #6e7fdb;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 15px;
+            height: 100%;
+            width: 2px;
+            background: #6e7fdb;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -42px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #66CCFF;
+            border: 3px solid #F0FFFF;
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: #6e7fdb;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-top.show {
+            opacity: 1;
         }
 
         footer {
             background-color: #66CCFF;
             color: white;
-            padding: 15px;
+            padding: 30px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #6e7fdb;
+        }
+        
+        .navbar {
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background-color: white !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .timeline {
+                padding-left: 30px;
+            }
+            .timeline-item::before {
+                left: -22px;
+            }
         }
     </style>
 </head>
 <body>
 
     <!-- 导航栏 -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">一个“天选打工人”的聚集地</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#">Yimisda</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">首页</a>
+                        <a class="nav-link" href="#home">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">服务</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">项目</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">关于我们</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#team">团队</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">联系我们</a>
                     </li>
                 </ul>
             </div>
@@ -67,49 +270,54 @@
     </nav>
 
     <!-- 欢迎区域 -->
-    <section class="hero-section text-center">
-        <div class="container">
+    <section id="home" class="hero-section text-center">
+        <div class="container" data-aos="fade-up" data-aos-duration="1000">
             <h1>欢迎来到 Yimisda 的网站！</h1>
-            <p>这里蕴含着青春的无限可能！</p>
-            <a href="#services" class="btn btn-light btn-lg mt-3">开启探索</a>
+            <p class="lead mt-3">这里蕴含着青春的无限可能！</p>
+            <a href="#services" class="btn btn-light btn-lg mt-4">
+                开启探索 <i class="bi bi-arrow-down-circle"></i>
+            </a>
         </div>
     </section>
 
     <!-- 服务区 -->
     <section id="services" class="py-5">
         <div class="container text-center">
-            <h2>平台支持</h2>
-            <div class="row mt-4">
-                <div class="col-md-4 mb-4">
-                    <div class="card service-card">
+            <h2 class="section-title mb-5" data-aos="fade-up">平台支持</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card service-card h-100">
                         <div class="card-body">
-                            <div class="feature-icon mb-3">
-                                <i class="bi bi-brush"></i>
+                            <div class="feature-icon">
+                                <i class="bi bi-pencil-square"></i>
                             </div>
                             <h5 class="card-title">文学鉴赏与创作</h5>
-                            <p class="card-text">在永远的校园里，探寻青春的诗和远方。</p>
+                            <p class="card-text">在永远的校园里，探寻青春的诗和远方。提供文学作品赏析指导、创作技巧分享以及原创作品发表平台。</p>
+                            <a href="#" class="btn btn-outline-primary mt-3">了解更多</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card service-card">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card service-card h-100">
                         <div class="card-body">
-                            <div class="feature-icon mb-3">
-                                <i class="bi bi-gear"></i>
+                            <div class="feature-icon">
+                                <i class="bi bi-code-slash"></i>
                             </div>
                             <h5 class="card-title">代码开发和数据分析</h5>
-                            <p class="card-text">对大数据进行蒸馏分析，同时对代码问题提供技术支持。</p>
+                            <p class="card-text">对大数据进行蒸馏分析，同时对代码问题提供技术支持。包括数据可视化、机器学习模型构建以及编程语言辅导。</p>
+                            <a href="#" class="btn btn-outline-primary mt-3">了解更多</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card service-card">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card service-card h-100">
                         <div class="card-body">
-                            <div class="feature-icon mb-3">
-                                <i class="bi bi-bar-chart"></i>
+                            <div class="feature-icon">
+                                <i class="bi bi-lightbulb"></i>
                             </div>
                             <h5 class="card-title">学习项目生成</h5>
-                            <p class="card-text">自学完成学科项目的构建，拯救大学生活的DDL旋涡。</p>
+                            <p class="card-text">自学完成学科项目的构建，拯救大学生活的DDL旋涡。提供项目规划、资源整合以及学习路径定制服务。</p>
+                            <a href="#" class="btn btn-outline-primary mt-3">了解更多</a>
                         </div>
                     </div>
                 </div>
@@ -117,14 +325,270 @@
         </div>
     </section>
 
+    <!-- 项目展示区 -->
+    <section id="projects" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">精选项目</h2>
+            <div class="row">
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="project-card">
+                        <img src="/api/placeholder/600/400" alt="文学社区项目" class="img-fluid">
+                        <div class="project-overlay">
+                            <h5>文学社区平台</h5>
+                            <p>为校园文学爱好者提供创作交流平台</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="project-card">
+                        <img src="/api/placeholder/600/400" alt="数据分析平台" class="img-fluid">
+                        <div class="project-overlay">
+                            <h5>学生数据分析系统</h5>
+                            <p>帮助学生分析学习数据，优化学习策略</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="project-card">
+                        <img src="/api/placeholder/600/400" alt="学习规划工具" class="img-fluid">
+                        <div class="project-overlay">
+                            <h5>智能学习规划助手</h5>
+                            <p>基于AI的个性化学习计划生成工具</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-primary" data-aos="fade-up">查看更多项目</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2 class="section-title">关于 Yimisda</h2>
+                    <p class="lead">一群充满激情的年轻人，致力于为大学生提供全方位的学习与创作支持。</p>
+                    <div class="timeline mt-5">
+                        <div class="timeline-item">
+                            <h5>2023年</h5>
+                            <p>Yimisda 平台正式成立，开始为校园内的学生提供学习支持。</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>2024年</h5>
+                            <p>扩展服务范围，增加文学创作与代码开发支持，团队成员增至15人。</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>2025年</h5>
+                            <p>推出在线学习项目生成系统，帮助更多学生高效完成学业任务。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <img src="/api/placeholder/600/400" alt="关于我们" class="img-fluid rounded">
+                    <div class="row mt-4">
+                        <div class="col-6 col-sm-3 text-center" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="counter">
+                                <h3 class="text-primary">500+</h3>
+                                <p>注册用户</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3 text-center" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="counter">
+                                <h3 class="text-primary">100+</h3>
+                                <p>完成项目</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3 text-center" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="counter">
+                                <h3 class="text-primary">15</h3>
+                                <p>团队成员</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3 text-center" data-aos="zoom-in" data-aos-delay="400">
+                            <div class="counter">
+                                <h3 class="text-primary">3</h3>
+                                <p>服务类别</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 团队成员 -->
+    <section id="team" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">核心团队</h2>
+            <div class="row">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-member">
+                        <img src="/api/placeholder/200/200" alt="团队成员1">
+                        <h5>张小明</h5>
+                        <p>创始人 & 文学总监</p>
+                        <div class="team-social">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-member">
+                        <img src="/api/placeholder/200/200" alt="团队成员2">
+                        <h5>李雨晴</h5>
+                        <p>技术总监</p>
+                        <div class="team-social">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-member">
+                        <img src="/api/placeholder/200/200" alt="团队成员3">
+                        <h5>王思远</h5>
+                        <p>学习项目管理</p>
+                        <div class="team-social">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2 class="section-title">联系我们</h2>
+                    <p class="lead mb-4">有任何问题或建议？请随时与我们联系！</p>
+                    <div class="contact-info mb-4">
+                        <p><i class="bi bi-geo-alt"></i> 中国北京市海淀区</p>
+                        <p><i class="bi bi-envelope"></i> contact@yimisda.com</p>
+                        <p><i class="bi bi-phone"></i> +86 123 4567 8910</p>
+                    </div>
+                    <div class="social-links mb-4">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="您的姓名">
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="您的邮箱">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="主题">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="5" placeholder="您的留言"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">发送留言</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 页脚 -->
     <footer class="text-center">
-        <p>&copy; 2025 带着憧憬踏入，期待突破与成长</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Yimisda</h5>
+                    <p>带着憧憬踏入，期待突破与成长</p>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>链接</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">首页</a></li>
+                        <li><a href="#services" class="text-white">服务</a></li>
+                        <li><a href="#projects" class="text-white">项目</a></li>
+                        <li><a href="#contact" class="text-white">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>订阅我们</h5>
+                    <form class="d-flex">
+                        <input type="email" class="form-control me-2" placeholder="您的邮箱">
+                        <button class="btn btn-outline-light" type="submit">订阅</button>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-white">
+            <p>&copy; 2025 Yimisda - 带着憧憬踏入，期待突破与成长</p>
+        </div>
     </footer>
+
+    <!-- 回到顶部按钮 -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="bi bi-arrow-up"></i>
+    </div>
 
     <!-- 引入 Bootstrap 5 JS 和依赖的 Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-
+    <!-- 引入 AOS 动画库 -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <!-- 自定义脚本 -->
+    <script>
+        // 初始化 AOS 动画库
+        AOS.init();
+        
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('mainNav');
+            const scrollTop = document.getElementById('scrollTop');
+            
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+                scrollTop.classList.add('show');
+            } else {
+                navbar.classList.remove('scrolled');
+                scrollTop.classList.remove('show');
+            }
+        });
+        
+        // 回到顶部功能
+        document.getElementById('scrollTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 平滑滚动到锚点
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
