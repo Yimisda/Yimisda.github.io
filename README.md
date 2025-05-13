@@ -1,6 +1,6 @@
-# Yimisda学术主页
+1# Yimisda 学术主页
 
-这是一个为北京大学学生设计的个人学术主页模板，适合研究生和本科生展示学术成果、分享学术博客和日常感悟。
+这是一个为 Yimisda 设计的个人学术主页模板，适合研究生和本科生展示学术成果、分享学术博客和日常感悟。
 
 ## 项目结构
 
@@ -42,20 +42,20 @@ yourrepository/
 ```css
 /* 在style.css中查找并修改这些颜色值 */
 .logo-text {
-    color: #122d72; /* 修改为你喜欢的颜色 */
+  color: #122d72; /* 修改为你喜欢的颜色 */
 }
 
 .social-links a:hover {
-    background-color: #122d72; /* 修改为你喜欢的颜色 */
-    color: white;
+  background-color: #122d72; /* 修改为你喜欢的颜色 */
+  color: white;
 }
 
 .post-btn {
-    background-color: #122d72; /* 修改为你喜欢的颜色 */
+  background-color: #122d72; /* 修改为你喜欢的颜色 */
 }
 
 footer {
-    background-color: #122d72; /* 修改为你喜欢的颜色 */
+  background-color: #122d72; /* 修改为你喜欢的颜色 */
 }
 ```
 
@@ -65,11 +65,11 @@ footer {
 
 ```html
 <section class="your-new-section" id="section-id">
-    <h2>新区块标题</h2>
-    
-    <div class="card">
-        <!-- 卡片内容 -->
-    </div>
+  <h2>新区块标题</h2>
+
+  <div class="card">
+    <!-- 卡片内容 -->
+  </div>
 </section>
 ```
 
@@ -91,4 +91,4 @@ footer {
 
 ---
 
-*此模板由北京大学学生设计，欢迎分享和使用！*
+_此模板由北京大学学生设计，欢迎分享和使用！_
