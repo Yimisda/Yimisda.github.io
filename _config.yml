@@ -22,7 +22,7 @@ repository: "Yimisda/Yimisda.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar: "profile.png"
+  avatar: "cat.png"
   name: "Zhangguoyi"
   pronouns: # example: "she/her"
   bio: "A student is currently studying in the 24th grade letter class"
