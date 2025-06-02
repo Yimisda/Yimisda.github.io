@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale: "en-US"
 site_theme: "default"
-title: "Timisdad"
+title: "Yimmisda"
 title_separator: "-"
 name: &name "Zhangguoyi"
 description: &description "personal description"
@@ -25,7 +25,7 @@ author:
   avatar: "cat.png"
   name: "Zhangguoyi"
   pronouns: # example: "she/her"
-  bio: "A student is currently studying in the 24th grade letter class"
+  bio: "A student is currently studying in the 24th grade Xing class"
   location: "Beijing, China"
   employer:
   uri: # URL
@@ -243,7 +243,7 @@ defaults:
   # _learning
   - scope:
       path: ""
-      type: teaching
+      type: learning
     values:
       layout: single
       author_profile: true
