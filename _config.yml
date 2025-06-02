@@ -207,7 +207,7 @@ kramdown:
 
 # These settings control the types of collections used by the template
 collections:
-  teaching:
+  learning:
     output: true
     permalink: /:collection/:path/
   publications:
@@ -216,9 +216,9 @@ collections:
   portfolio:
     output: true
     permalink: /:collection/:path/
-  talks:
-    output: true
-    permalink: /:collection/:path/
+  #talks:
+  #output: true
+  #permalink: /:collection/:path/
 
 # These settings control how pages and collections are included in the site
 defaults:
@@ -240,7 +240,7 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _teaching
+  # _learning
   - scope:
       path: ""
       type: teaching
