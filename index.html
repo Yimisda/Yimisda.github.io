@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="北京大学信息科学技术学院学生个人学术主页">
+    <meta name="keywords" content="PKU, 北大, 信科, Computer Science, Research">
+    <title>Your Name - PKU CS | 北京大学信息科学技术学院</title>
+
+    <!-- 预加载关键资源 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Prism.js for code highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* 成熟专业的色彩系统 */
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+
+            /* 文本色彩 */
+            --text-primary: #2c3e50;
+            --text-secondary: #5a6c7d;
+            --text-muted: #95a5a6;
+            --text-inverse: #ffffff;
+
+            /* 背景色彩 */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: #ecf0f1;
+            --bg-card: rgba(255, 255, 255, 0.95);
+
+            /* 边框和阴影 */
+            --border-color: #dce1e7;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.16);
+            --shadow-xl: 0 12px 24px rgba(0,0,0,0.20);
+
+            /* 字体系统 */
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-serif: 'Source Serif Pro', Georgia, serif;
+            --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+            /* 文章排版 */
+            --article-font-size: 17px;
+            --article-line-height: 1.75;
+            --article-max-width: 680px;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #ecf0f1;
+            --secondary-color: #bdc3c7;
+            --accent-color: #3498db;
+
+            --text-primary: #ecf0f1;
+            --text-secondary: #bdc3c7;
+            --text-muted: #7f8c8d;
+            --text-inverse: #2c3e50;
+
+            --bg-primary: #1a1d23;
+            --bg-secondary: #22262e;
+            --bg-tertiary: #2c3039;
+            --bg-card: rgba(34, 38, 46, 0.95);
+
+            --border-color: #34495e;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.2);
+            --shadow-md: 0 4px 8px rgba(0,0,0,0.3);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.4);
+            --shadow-xl: 0 12px 24px rgba(0,0,0,0.5);
+        }
+
+        /* 基础样式 */
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* 加载性能优化 */
+        .lazy-load {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .lazy-load.loaded {
+            opacity: 1;
+        }
+
+        /* 烟花效果画布 */
+        #fireworks-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-brand .badge {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-link.active {
+            color: var(--text-primary);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-color);
+        }
+
+        /* 搜索框 */
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            padding: 0.5rem 2.5rem 0.5rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            width: 200px;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            width: 250px;
+            border-color: var(--accent-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        /* 主题切换 */
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 0.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--bg-tertiary);
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 2rem 4rem;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .badge-item {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge-item .icon {
+            color: var(--accent-color);
+        }
+
+        /* 文章网格 */
+        .articles-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .filter-tab:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .filter-tab.active {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .article-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .article-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .article-excerpt {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        /* Markdown上传区域 */
+        .upload-section {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border: 2px dashed var(--border-color);
+            text-align: center;
+        }
+
+        .upload-area {
+            padding: 3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--accent-color);
+        }
+
+        .upload-area.dragging {
+            background: var(--bg-tertiary);
+            border-color: var(--accent-color);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .upload-text {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-hint {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        /* 文章阅读页面 */
+        .article-page {
+            max-width: var(--article-max-width);
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+        }
+
+        .article-page-title {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .article-page-meta {
+            display: flex;
+            gap: 2rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .article-body {
+            font-family: var(--font-serif);
+            font-size: var(--article-font-size);
+            line-height: var(--article-line-height);
+            color: var(--text-primary);
+        }
+
+        .article-body h1,
+        .article-body h2,
+        .article-body h3,
+        .article-body h4,
+        .article-body h5,
+        .article-body h6 {
+            font-family: var(--font-sans);
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .article-body h2 {
+            font-size: 1.75rem;
+            margin-top: 3rem;
+        }
+
+        .article-body h3 {
+            font-size: 1.4rem;
+        }
+
+        .article-body p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-body code {
+            font-family: var(--font-mono);
+            background: var(--bg-tertiary);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+        .article-body pre {
+            background: var(--bg-tertiary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-body pre code {
+            background: transparent;
+            padding: 0;
+        }
+
+        .article-body blockquote {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .article-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .article-body a {
+            color: var(--accent-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .article-body a:hover {
+            border-bottom-color: var(--accent-color);
+        }
+
+        /* 目录 TOC */
+        .toc {
+            position: fixed;
+            right: 2rem;
+            top: 8rem;
+            width: 250px;
+            max-height: calc(100vh - 10rem);
+            overflow-y: auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: none;
+        }
+
+        @media (min-width: 1400px) {
+            .toc {
+                display: block;
+            }
+        }
+
+        .toc-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            display: block;
+            padding: 0.25rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .toc-link:hover {
+            color: var(--accent-color);
+            padding-left: 0.5rem;
+        }
+
+        .toc-link.active {
+            color: var(--accent-color);
+            font-weight: 500;
+            border-left: 2px solid var(--accent-color);
+            padding-left: 0.5rem;
+        }
+
+        /* 相关文章 */
+        .related-articles {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .related-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* 页脚 */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        /* 移动端优化 */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hero {
+                padding: 6rem 1rem 3rem;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .article-page {
+                padding: 5rem 1rem 3rem;
+            }
+
+            .search-input {
+                width: 150px;
+            }
+
+            .search-input:focus {
+                width: 180px;
+            }
+        }
+
+        /* 加载动画 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--text-muted);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- 烟花画布 -->
+    <canvas id="fireworks-canvas"></canvas>
+
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-brand">
+                Your Name
+                <span class="badge">PKU CS</span>
+            </a>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">首页</a>
+                <a href="#articles" class="nav-link">文章</a>
+                <a href="#research" class="nav-link">研究</a>
+                <a href="#projects" class="nav-link">项目</a>
+                <a href="#about" class="nav-link">关于</a>
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="搜索..." id="searchInput">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <button class="theme-toggle" id="themeToggle">
+                    <span id="themeIcon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content fade-in">
+            <h1 class="hero-title">Hi, I'm Your Name</h1>
+            <p class="hero-subtitle">北京大学信息科学技术学院 | 计算机科学与技术专业</p>
+            <div class="hero-badges">
+                <div class="badge-item">
+                    <span class="icon">🎓</span>
+                    <span>PKU 2024级</span>
+                </div>
+                <div class="badge-item">
+                    <span class="icon">💻</span>
+                    <span>Full Stack Developer</span>
+                </div>
+                <div class="badge-item">
+                    <span class="icon">🔬</span>
+                    <span>AI Researcher</span>
+                </div>
+                <div class="badge-item">
+                    <span class="icon">📝</span>
+                    <span>Tech Writer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Markdown上传区域 -->
+    <section class="upload-section">
+        <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">📄</div>
+            <p class="upload-text">拖拽 Markdown 文件到此处或点击上传</p>
+            <p class="upload-hint">支持 .md 格式，文件将自动转换为网页模块</p>
+            <input type="file" id="file-input" accept=".md,.markdown">
+        </div>
+    </section>
+
+    <!-- 文章列表 -->
+    <section class="articles-section" id="articles">
+        <div class="section-header">
+            <h2 class="section-title">最新文章</h2>
+            <div class="filter-tabs">
+                <div class="filter-tab active" data-filter="all">全部</div>
+                <div class="filter-tab" data-filter="tech">技术</div>
+                <div class="filter-tab" data-filter="research">研究</div>
+                <div class="filter-tab" data-filter="thoughts">思考</div>
+            </div>
+        </div>
+        <div class="articles-grid">
+            <article class="article-card" data-category="tech">
+                <div class="article-image"></div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span>2024-12-20</span>
+                        <span>•</span>
+                        <span>5 min read</span>
+                    </div>
+                    <h3 class="article-title">深入理解Transformer架构：从原理到实践</h3>
+                    <p class="article-excerpt">探讨Transformer模型的核心机制，包括自注意力、位置编码等关键概念，并通过代码实例演示实际应用...</p>
+                    <div class="article-tags">
+                        <span class="tag">深度学习</span>
+                        <span class="tag">NLP</span>
+                        <span class="tag">PyTorch</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="article-card" data-category="research">
+                <div class="article-image"></div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span>2024-12-18</span>
+                        <span>•</span>
+                        <span>8 min read</span>
+                    </div>
+                    <h3 class="article-title">图神经网络在推荐系统中的应用研究</h3>
+                    <p class="article-excerpt">本文介绍了如何利用图神经网络改进传统推荐系统，提高推荐准确性和用户满意度...</p>
+                    <div class="article-tags">
+                        <span class="tag">GNN</span>
+                        <span class="tag">推荐系统</span>
+                        <span class="tag">机器学习</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="article-card" data-category="thoughts">
+                <div class="article-image"></div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span>2024-12-15</span>
+                        <span>•</span>
+                        <span>6 min read</span>
+                    </div>
+                    <h3 class="article-title">关于计算机科学学习路径的一些思考</h3>
+                    <p class="article-excerpt">作为北大信科的学生，分享我对CS学习路径的理解和规划，以及如何平衡理论与实践...</p>
+                    <div class="article-tags">
+                        <span class="tag">学习方法</span>
+                        <span class="tag">职业规划</span>
+                        <span class="tag">PKU</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>关于本站</h4>
+                <p>这是我的个人学术主页，记录学习、研究和项目经历。</p>
+                <p>Built with ❤️ and code</p>
+            </div>
+            <div class="footer-section">
+                <h4>快速链接</h4>
+                <p><a href="#articles">文章归档</a></p>
+                <p><a href="#projects">项目展示</a></p>
+                <p><a href="#research">研究成果</a></p>
+                <p><a href="#about">关于我</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>联系方式</h4>
+                <p><a href="https://github.com/yourusername">GitHub</a></p>
+                <p><a href="mailto:yourname@pku.edu.cn">Email</a></p>
+                <p><a href="https://linkedin.com/in/yourname">LinkedIn</a></p>
+                <p><a href="https://scholar.google.com">Google Scholar</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>友情链接</h4>
+                <p><a href="https://www.pku.edu.cn">北京大学</a></p>
+                <p><a href="https://eecs.pku.edu.cn">信息科学技术学院</a></p>
+                <p><a href="https://cs.pku.edu.cn">计算机科学技术系</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Your Name. All rights reserved. | Powered by GitHub Pages</p>
+        </div>
+    </footer>
+
+    <!-- Prism.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-tsx.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+
+    <script>
+        // 烟花效果
+        class Firework {
+            constructor(x, y, targetX, targetY, canvas, ctx) {
+                this.x = x;
+                this.y = y;
+                this.startX = x;
+                this.startY = y;
+                this.targetX = targetX;
+                this.targetY = targetY;
+                this.distanceToTarget = Math.sqrt(Math.pow(targetX - x, 2) + Math.pow(targetY - y, 2));
+                this.distanceTraveled = 0;
+                this.trail = [];
+                this.trailLength = 10;
+                this.angle = Math.atan2(targetY - y, targetX - x);
+                this.speed = 2;
+                this.acceleration = 1.05;
+                this.brightness = Math.random() * 50 + 50;
+                this.targetRadius = 1;
+                this.canvas = canvas;
+                this.ctx = ctx;
+            }
+
+            update() {
+                this.trail.push({x: this.x, y: this.y});
+                if (this.trail.length > this.trailLength) {
+                    this.trail.shift();
+                }
+
+                this.speed *= this.acceleration;
+                let vx = Math.cos(this.angle) * this.speed;
+                let vy = Math.sin(this.angle) * this.speed;
+
+                this.distanceTraveled = Math.sqrt(Math.pow(this.x - this.startX, 2) + Math.pow(this.y - this.startY, 2));
+
+                if (this.distanceTraveled >= this.distanceToTarget) {
+                    return new Explosion(this.targetX, this.targetY, this.canvas, this.ctx);
+                } else {
+                    this.x += vx;
+                    this.y += vy;
+                }
+            }
+
+            draw() {
+                this.ctx.beginPath();
+                this.ctx.moveTo(this.trail[0].x, this.trail[0].y);
+
+                for (let i = 0; i < this.trail.length - 1; i++) {
+                    let opacity = i / this.trail.length;
+                    this.ctx.strokeStyle = `hsla(${Math.random() * 60 + 200}, 100%, ${this.brightness}%, ${opacity})`;
+                    this.ctx.lineTo(this.trail[i].x, this.trail[i].y);
+                    this.ctx.stroke();
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(this.trail[i].x, this.trail[i].y);
+                }
+
+                this.ctx.lineTo(this.x, this.y);
+                this.ctx.stroke();
+            }
+        }
+
+        class Particle {
+            constructor(x, y, canvas, ctx) {
+                this.x = x;
+                this.y = y;
+                this.canvas = canvas;
+                this.ctx = ctx;
+                this.angle = Math.random() * Math.PI * 2;
+                this.speed = Math.random() * 6 + 1;
+                this.friction = 0.95;
+                this.gravity = 1;
+                this.hue = Math.random() * 360;
+                this.brightness = Math.random() * 80 + 20;
+                this.alpha = 1;
+                this.decay = Math.random() * 0.03 + 0.01;
+            }
+
+            update() {
+                this.speed *= this.friction;
+                this.x += Math.cos(this.angle) * this.speed;
+                this.y += Math.sin(this.angle) * this.speed + this.gravity;
+                this.alpha -= this.decay;
+                if (this.alpha <= this.decay) {
+                    this.alpha = 0;
+                }
+                return this.alpha > 0;
+            }
+
+            draw() {
+                this.ctx.save();
+                this.ctx.globalAlpha = this.alpha;
+                this.ctx.beginPath();
+                this.ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+                this.ctx.fillStyle = `hsla(${this.hue}, 100%, ${this.brightness}%, ${this.alpha})`;
+                this.ctx.fill();
+                this.ctx.restore();
+            }
+        }
+
+        class Explosion {
+            constructor(x, y, canvas, ctx) {
+                this.particles = [];
+                this.canvas = canvas;
+                this.ctx = ctx;
+                for (let i = 0; i < 30; i++) {
+                    this.particles.push(new Particle(x, y, canvas, ctx));
+                }
+            }
+
+            update() {
+                this.particles = this.particles.filter(particle => particle.update());
+                return this.particles.length > 0;
+            }
+
+            draw() {
+                for (let particle of this.particles) {
+                    particle.draw();
+                }
+            }
+        }
+
+        class FireworksManager {
+            constructor() {
+                this.canvas = document.getElementById('fireworks-canvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.fireworks = [];
+                this.explosions = [];
+                this.resizeCanvas();
+                window.addEventListener('resize', () => this.resizeCanvas());
+                document.addEventListener('click', (e) => this.createFirework(e));
+                this.animate();
+            }
+
+            resizeCanvas() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+            }
+
+            createFirework(e) {
+                let startX = this.canvas.width / 2;
+                let startY = this.canvas.height;
+                this.fireworks.push(new Firework(startX, startY, e.clientX, e.clientY, this.canvas, this.ctx));
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                this.ctx.globalCompositeOperation = 'destination-out';
+                this.ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                this.ctx.globalCompositeOperation = 'lighter';
+
+                let i = this.fireworks.length;
+                while (i--) {
+                    this.fireworks[i].draw();
+                    let explosion = this.fireworks[i].update();
+                    if (explosion) {
+                        this.explosions.push(explosion);
+                        this.fireworks.splice(i, 1);
+                    }
+                }
+
+                i = this.explosions.length;
+                while (i--) {
+                    this.explosions[i].draw();
+                    if (!this.explosions[i].update()) {
+                        this.explosions.splice(i, 1);
+                    }
+                }
+            }
+        }
+
+        // 初始化烟花效果
+        const fireworksManager = new FireworksManager();
+
+        // 主题切换
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const html = document.documentElement;
+
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', currentTheme);
+        themeIcon.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+
+        themeToggle.addEventListener('click', () => {
+            const newTheme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        });
+
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 导航链接激活状态
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // 文章筛选
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const articleCards = document.querySelectorAll('.article-card');
+
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                filterTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                const filter = this.getAttribute('data-filter');
+                articleCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                        card.classList.add('fade-in');
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Markdown文件上传和解析
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('file-input');
+
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragging');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragging');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragging');
+            const files = e.dataTransfer.files;
+            if (files.length > 0 && files[0].name.endsWith('.md')) {
+                handleMarkdownFile(files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file && file.name.endsWith('.md')) {
+                handleMarkdownFile(file);
+            }
+        });
+
+        function handleMarkdownFile(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const markdown = e.target.result;
+                const html = marked.parse(markdown);
+                createArticleFromMarkdown(file.name, html);
+            };
+            reader.readAsText(file);
+        }
+
+        function createArticleFromMarkdown(filename, htmlContent) {
+            // 提取标题（假设第一个h1是标题）
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = htmlContent;
+            const title = tempDiv.querySelector('h1')?.textContent || filename.replace('.md', '');
+
+            // 创建新的文章卡片
+            const articleCard = document.createElement('article');
+            articleCard.className = 'article-card fade-in';
+            articleCard.setAttribute('data-category', 'tech');
+
+            const today = new Date().toISOString().split('T')[0];
+
+            articleCard.innerHTML = `
+                <div class="article-image"></div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span>${today}</span>
+                        <span>•</span>
+                        <span>新上传</span>
+                    </div>
+                    <h3 class="article-title">${title}</h3>
+                    <p class="article-excerpt">从Markdown文件自动生成的文章...</p>
+                    <div class="article-tags">
+                        <span class="tag">Markdown</span>
+                        <span class="tag">自动生成</span>
+                    </div>
+                </div>
+            `;
+
+            // 添加到文章列表
+            document.querySelector('.articles-grid').prepend(articleCard);
+
+            // 提示上传成功
+            alert(`文件 "${filename}" 已成功转换为文章！`);
+        }
+
+        // 搜索功能
+        const searchInput = document.getElementById('searchInput');
+        let searchTimeout;
+
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const searchTerm = this.value.toLowerCase();
+                const articles = document.querySelectorAll('.article-card');
+
+                articles.forEach(article => {
+                    const title = article.querySelector('.article-title').textContent.toLowerCase();
+                    const excerpt = article.querySelector('.article-excerpt').textContent.toLowerCase();
+                    const tags = Array.from(article.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase());
+
+                    if (title.includes(searchTerm) || excerpt.includes(searchTerm) || tags.some(tag => tag.includes(searchTerm))) {
+                        article.style.display = 'block';
+                        highlightSearchTerm(article, searchTerm);
+                    } else {
+                        article.style.display = 'none';
+                    }
+                });
+            }, 300);
+        });
+
+        function highlightSearchTerm(element, term) {
+            if (!term) return;
+            // 这里可以实现高亮逻辑
+        }
+
+        // 性能优化：懒加载图片
+        const lazyImages = document.querySelectorAll('.lazy-load');
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        lazyImages.forEach(img => imageObserver.observe(img));
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
