@@ -4,56 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="北京大学信息科学技术学院学生个人学术主页 - 计算机科学研究与技术分享">
-    <meta name="keywords" content="PKU, 北大, 信科">
+    <meta name="keywords" content="PKU, 北大, 信科, 学术研究, LaTeX, 数学公式">
     <meta name="author" content="Yimisda">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://Yimisda.github.io/">
-    <meta property="og:title" content="Yimisda - PKU EE | 北京大学信息科学技术学院">
-    <meta property="og:description" content="电子信息研究与技术分享">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://Yimisda.github.io/">
-    <meta property="twitter:title" content="Yimisda - PKU EE">
-    <meta property="twitter:description" content="电子信息研究与技术分享">
-
     <title>Yimisda - PKU EE | 北京大学信息科学技术学院</title>
-
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="data:application/json,{
-        'name': 'PKU EE Academic Website',
-        'short_name': 'PKU EE',
-        'description': '北京大学信息科学技术学院学生个人学术主页',
-        'start_url': '/',
-        'display': 'standalone',
-        'theme_color': '#3498db',
-        'background_color': '#ffffff',
-        'icons': [
-            {
-                'src': 'data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2svg\" viewBox=\"0 0 100 100\"><circle cx=\"50\" cy=\"50\" r=\"40\" fill=\"%233498db\"/><text x=\"50\" y=\"60\" text-anchor=\"middle\" fill=\"white\" font-size=\"30\" font-family=\"Arial\">CS</text></svg>',
-                'sizes': '192x192',
-                'type': 'image/svg+xml'
-            }
-        ]
-    }">
 
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Enhanced Fonts for Academic Content -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@400;500;600&family=Computer+Modern+Serif:wght@400;700&family=Latin+Modern+Roman:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- External Libraries -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+
+    <!-- Enhanced MathJax Configuration for LaTeX Support -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                processRefs: true,
+                packages: {'[+]': ['ams', 'amsmath', 'amssymb', 'newcommand', 'mathtools', 'physics', 'cancel', 'color']},
+                macros: {
+                    R: "\\mathbb{R}",
+                    C: "\\mathbb{C}",
+                    N: "\\mathbb{N}",
+                    Z: "\\mathbb{Z}",
+                    Q: "\\mathbb{Q}",
+                    d: "\\mathrm{d}",
+                    e: "\\mathrm{e}",
+                    i: "\\mathrm{i}",
+                    vec: ["\\boldsymbol{#1}", 1],
+                    norm: ["\\left\\|#1\\right\\|", 1],
+                    abs: ["\\left|#1\\right|", 1]
+                }
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process',
+                renderActions: {
+                    addMenu: [0, '', '']
+                }
+            },
+            svg: {
+                fontCache: 'global',
+                displayAlign: 'center',
+                displayIndent: '0em'
+            },
+            startup: {
+                ready: () => {
+                    console.log('MathJax LaTeX支持已加载');
+                    MathJax.startup.defaultReady();
+                    MathJax.startup.promise.then(() => {
+                        console.log('MathJax LaTeX渲染就绪');
+                    });
+                }
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
 
     <style>
-        /* CSS Variables & Base Styles */
+        /* Enhanced CSS Variables for Academic Content */
         :root {
+            /* Academic Color Palette */
+            --academic-blue: #1e3a8a;
+            --academic-navy: #1e293b;
+            --academic-red: #dc2626;
+            --academic-green: #059669;
+            --academic-gold: #d97706;
+            --academic-purple: #7c3aed;
+
             /* Enhanced Color System */
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
@@ -101,10 +129,11 @@
             --border-radius-2xl: 24px;
             --border-radius-full: 9999px;
 
-            /* Typography System */
+            /* Academic Typography System */
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            --font-serif: 'Source Serif Pro', Georgia, serif;
+            --font-serif: 'Source Serif Pro', 'Computer Modern Serif', Georgia, serif;
             --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+            --font-academic: 'Latin Modern Roman', 'Computer Modern Serif', 'Times New Roman', serif;
 
             /* Spacing System */
             --space-1: 0.25rem;
@@ -125,10 +154,11 @@
             --transition-slow: 0.3s ease;
             --transition-slower: 0.5s ease;
 
-            /* Article Typography */
+            /* Academic Article Typography */
             --article-font-size: 18px;
             --article-line-height: 1.8;
-            --article-max-width: 720px;
+            --article-max-width: 780px;
+            --article-heading-weight: 600;
         }
 
         /* Dark Theme */
@@ -562,6 +592,208 @@
             letter-spacing: 0.1em;
         }
 
+        /* LaTeX Demo Section Styles */
+        .latex-demo-section {
+            max-width: 1000px;
+            margin: var(--space-16) auto var(--space-8);
+            padding: var(--space-6);
+        }
+
+        .latex-container {
+            background: var(--bg-card);
+            border-radius: var(--border-radius-xl);
+            padding: var(--space-10);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .latex-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-8);
+            text-align: center;
+            font-family: var(--font-academic);
+        }
+
+        .latex-examples {
+            display: grid;
+            gap: var(--space-6);
+            margin-bottom: var(--space-8);
+        }
+
+        .latex-example {
+            background: var(--bg-secondary);
+            padding: var(--space-6);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .latex-example h4 {
+            color: var(--text-primary);
+            margin-bottom: var(--space-3);
+            font-weight: 600;
+            font-family: var(--font-sans);
+        }
+
+        .latex-example p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-family: var(--font-academic);
+            margin: 0;
+        }
+
+        .math-block {
+            background: var(--bg-primary);
+            padding: var(--space-4);
+            border-radius: var(--border-radius-md);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            overflow-x: auto;
+        }
+
+        /* GitHub Integration Section Styles */
+        .github-integration-section {
+            max-width: 1000px;
+            margin: var(--space-16) auto;
+            padding: var(--space-6);
+        }
+
+        .github-container {
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius-xl);
+            padding: var(--space-10);
+            border: 1px solid var(--border-color);
+        }
+
+        .github-controls {
+            display: flex;
+            gap: var(--space-4);
+            margin-bottom: var(--space-8);
+            flex-wrap: wrap;
+        }
+
+        .github-input {
+            flex: 1;
+            min-width: 300px;
+            padding: var(--space-4) var(--space-5);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all var(--transition-base);
+            outline: none;
+        }
+
+        .github-input:focus {
+            border-color: var(--accent-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .github-demo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-6);
+            padding: var(--space-6);
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .demo-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            opacity: 0.8;
+        }
+
+        .demo-text {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* GitHub Redirect Styles */
+        .github-redirect {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+        }
+
+        .github-link {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-4) var(--space-6);
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-full);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition-base);
+        }
+
+        .github-link:hover {
+            background: #24292e;
+            color: white;
+            border-color: #24292e;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .github-link .fab {
+            font-size: 1.2rem;
+        }
+
+        .github-link .fas {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Empty State Styles */
+        .empty-state {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+            padding: var(--space-16);
+        }
+
+        .empty-state-content {
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .empty-icon {
+            margin-bottom: var(--space-6);
+        }
+
+        .empty-icon i {
+            font-size: 4rem;
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        .empty-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-4);
+        }
+
+        .empty-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--space-8);
+            font-size: 1.1rem;
+        }
+
+        .empty-actions {
+            display: flex;
+            justify-content: center;
+        }
+
         /* Enhanced Articles Section */
         .articles-section {
             max-width: 1400px;
@@ -582,38 +814,6 @@
             font-size: 2.5rem;
             font-weight: 700;
             color: var(--text-primary);
-        }
-
-        .filter-tabs {
-            display: flex;
-            gap: var(--space-2);
-            flex-wrap: wrap;
-            background: var(--bg-secondary);
-            padding: var(--space-2);
-            border-radius: var(--border-radius-full);
-            border: 1px solid var(--border-color);
-        }
-
-        .filter-tab {
-            padding: var(--space-2) var(--space-4);
-            background: transparent;
-            border: none;
-            border-radius: var(--border-radius-full);
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all var(--transition-base);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .filter-tab:hover {
-            background: var(--bg-primary);
-            color: var(--text-primary);
-        }
-
-        .filter-tab.active {
-            background: var(--accent-color);
-            color: white;
         }
 
         .articles-grid {
@@ -726,56 +926,6 @@
 
         .read-more:hover {
             gap: var(--space-3);
-        }
-
-        /* Enhanced Upload Section */
-        .upload-section {
-            max-width: 800px;
-            margin: var(--space-16) auto;
-            padding: var(--space-6);
-        }
-
-        .upload-area {
-            background: var(--bg-secondary);
-            border: 3px dashed var(--border-color-dark);
-            border-radius: var(--border-radius-xl);
-            padding: var(--space-16);
-            text-align: center;
-            cursor: pointer;
-            transition: all var(--transition-base);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .upload-area:hover,
-        .upload-area.dragging {
-            background: var(--bg-tertiary);
-            border-color: var(--accent-color);
-            transform: scale(1.02);
-        }
-
-        .upload-icon {
-            font-size: 4rem;
-            color: var(--text-muted);
-            margin-bottom: var(--space-4);
-            transition: all var(--transition-base);
-        }
-
-        .upload-area:hover .upload-icon {
-            color: var(--accent-color);
-            transform: scale(1.1);
-        }
-
-        .upload-text {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: var(--space-2);
-            font-weight: 500;
-        }
-
-        .upload-hint {
-            color: var(--text-muted);
-            font-size: 0.9rem;
         }
 
         /* Mobile Navigation */
@@ -903,6 +1053,7 @@
                 --space-12: 2.5rem;
                 --space-16: 3rem;
                 --space-20: 4rem;
+                --article-font-size: 16px;
             }
 
             .nav-links {
@@ -960,23 +1111,40 @@
                 text-align: left;
             }
 
-            .filter-tabs {
-                width: 100%;
-                justify-content: center;
+            .github-controls {
+                flex-direction: column;
+            }
+
+            .github-input {
+                min-width: 100%;
+            }
+
+            .github-demo {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .demo-icon {
+                font-size: 2.5rem;
+            }
+
+            .latex-examples {
+                gap: var(--space-4);
+            }
+
+            .latex-example {
+                padding: var(--space-4);
+            }
+
+            .math-block {
+                font-size: 0.9rem;
+                padding: var(--space-3);
             }
         }
 
         @media (max-width: 480px) {
             .stats-container {
                 grid-template-columns: 1fr;
-            }
-
-            .upload-area {
-                padding: var(--space-8);
-            }
-
-            .upload-icon {
-                font-size: 3rem;
             }
         }
 
@@ -1081,6 +1249,76 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--accent-color);
         }
+
+        /* Notification Styles */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: var(--space-6);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            padding: var(--space-4) var(--space-6);
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            box-shadow: var(--shadow-xl);
+            z-index: 2000;
+            min-width: 300px;
+            transform: translateX(120%);
+            transition: transform var(--transition-base);
+            backdrop-filter: blur(10px);
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            border-left: 4px solid var(--success-color);
+        }
+
+        .notification.error {
+            border-left: 4px solid var(--danger-color);
+        }
+
+        .notification i {
+            font-size: 1.2rem;
+        }
+
+        .notification.success i {
+            color: var(--success-color);
+        }
+
+        .notification.error i {
+            color: var(--danger-color);
+        }
+
+        .notification span {
+            flex: 1;
+            color: var(--text-primary);
+        }
+
+        .close-notification {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-base);
+        }
+
+        .close-notification:hover {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
     </style>
 </head>
 <body>
@@ -1091,8 +1329,8 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-brand">
-                <div class="brand-logo">CS</div>
-                <span>Your Name</span>
+                <div class="brand-logo">EE</div>
+                <span>Yimisda</span>
                 <span class="brand-badge">PKU</span>
             </a>
 
@@ -1137,11 +1375,10 @@
     <section class="hero" id="home">
         <div class="hero-content animate-fade-in">
             <h1 class="hero-title">
-                Hi, I'm <span class="highlight">Your Name</span>
+                Hi, I'm <span class="highlight">Yimisda</span>
             </h1>
             <p class="hero-subtitle">
-                北京大学信息科学技术学院 | 计算机科学与技术专业<br>
-                专注于人工智能与机器学习研究
+                PKU EECS Student & Research Enthusiast
             </p>
 
             <div class="hero-badges">
@@ -1159,7 +1396,7 @@
                 </div>
                 <div class="hero-badge hover-glow">
                     <i class="fas fa-pen-fancy icon"></i>
-                    <span>Tech Writer</span>
+                    <span>Academic Writer</span>
                 </div>
             </div>
 
@@ -1198,151 +1435,115 @@
         </div>
     </section>
 
-    <!-- Enhanced Upload Section -->
-    <section class="upload-section">
-        <div class="upload-area" id="uploadArea">
-            <div class="upload-icon animate-bounce">
-                <i class="fas fa-cloud-upload-alt"></i>
+    <!-- LaTeX Demo Section -->
+    <section class="latex-demo-section" id="latex-demo">
+        <div class="latex-container">
+            <h3 class="latex-title">LaTeX数学公式渲染测试</h3>
+            <div class="latex-examples">
+                <div class="latex-example">
+                    <h4>行内公式示例:</h4>
+                    <p>欧拉公式: $e^{i\pi} + 1 = 0$ 和质能方程 $E = mc^2$</p>
+                </div>
+
+                <div class="latex-example">
+                    <h4>块级公式示例:</h4>
+                    <div class="math-block">
+                        $$\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}$$
+                    </div>
+                </div>
+
+                <div class="latex-example">
+                    <h4>矩阵与方程组:</h4>
+                    <div class="math-block">
+                        $$\begin{pmatrix}
+                        a & b \\
+                        c & d
+                        \end{pmatrix}
+                        \begin{pmatrix}
+                        x \\
+                        y
+                        \end{pmatrix}
+                        =
+                        \begin{pmatrix}
+                        ax + by \\
+                        cx + dy
+                        \end{pmatrix}$$
+                    </div>
+                </div>
+
+                <div class="latex-example">
+                    <h4>复杂数学表达式:</h4>
+                    <div class="math-block">
+                        $$\frac{\partial}{\partial t}\int_{\Omega} u \, d\mathbf{x} = \int_{\partial\Omega} \mathbf{F} \cdot \mathbf{n} \, dS$$
+                    </div>
+                </div>
             </div>
-            <p class="upload-text">拖拽 Markdown 文件到此处或点击上传</p>
-            <p class="upload-hint">支持 .md 格式，文件将自动转换为网页模块</p>
-            <input type="file" id="file-input" accept=".md,.markdown" style="display: none;">
+
+            <button id="re-render-latex" class="cta-button cta-secondary">
+                <i class="fas fa-square-root-alt"></i>
+                重新渲染LaTeX公式
+            </button>
+        </div>
+    </section>
+
+    <!-- GitHub Integration Section -->
+    <section class="github-integration-section">
+        <div class="github-container">
+            <h2 class="section-title">GitHub项目展示</h2>
+            <div class="github-controls">
+                <input type="text" id="github-repo-input" class="github-input"
+                       placeholder="输入GitHub仓库地址 (如: https://github.com/username/repo)"
+                       value="https://github.com/Yimisda/">
+                <button id="generate-from-github" class="cta-button cta-primary">
+                    <i class="fab fa-github"></i>
+                    生成项目卡片
+                </button>
+            </div>
+            <div class="github-demo">
+                <div class="demo-icon">
+                    <i class="fab fa-github"></i>
+                </div>
+                <p class="demo-text">
+                    输入您的GitHub仓库链接，系统将自动获取项目信息并生成精美的展示卡片。
+                    支持README解析、语言统计、LaTeX公式渲染等功能。
+                </p>
+            </div>
         </div>
     </section>
 
     <!-- Enhanced Articles Section -->
     <section class="articles-section" id="articles">
         <div class="section-header">
-            <h2 class="section-title">最新文章</h2>
-            <div class="filter-tabs">
-                <button class="filter-tab active" data-filter="all">全部</button>
-                <button class="filter-tab" data-filter="tech">技术</button>
-                <button class="filter-tab" data-filter="research">研究</button>
-                <button class="filter-tab" data-filter="thoughts">思考</button>
-                <button class="filter-tab" data-filter="tutorials">教程</button>
+            <h2 class="section-title">学术文章</h2>
+            <div class="github-redirect">
+                <a href="https://github.com/Yimisda" class="github-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                    <span>访问我的GitHub查看所有项目与文档</span>
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
             </div>
         </div>
 
-        <div class="articles-grid">
-            <article class="article-card animate-fade-in hover-glow" data-category="tech">
-                <div class="article-image"></div>
-                <div class="article-content">
-                    <div class="article-meta">
-                        <span><i class="fas fa-calendar"></i> 2024-12-20</span>
-                        <span><i class="fas fa-clock"></i> 5 min read</span>
-                        <span><i class="fas fa-eye"></i> 1.2k views</span>
-                    </div>
-                    <h3 class="article-title">深入理解Transformer架构：从原理到实践</h3>
-                    <p class="article-excerpt">
-                        探讨Transformer模型的核心机制，包括自注意力、位置编码等关键概念，
-                        并通过代码实例演示实际应用。本文将带你从零开始构建一个完整的Transformer模型。
-                    </p>
-                    <div class="article-tags">
-                        <span class="tag">深度学习</span>
-                        <span class="tag">NLP</span>
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">Transformer</span>
-                    </div>
-                    <div class="article-footer">
-                        <a href="#" class="read-more">
-                            阅读更多 <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <div class="article-likes">
-                            <i class="fas fa-heart"></i> 234
-                        </div>
-                    </div>
+        <div class="empty-state">
+            <div class="empty-state-content">
+                <div class="empty-icon">
+                    <i class="fab fa-github"></i>
                 </div>
-            </article>
+                <h3 class="empty-title">项目展示区域</h3>
+                <p class="empty-description">
+                    使用上方的GitHub集成功能生成项目卡片，或直接访问我的GitHub仓库查看完整的项目与研究内容。
+                </p>
+                <div class="empty-actions">
+                    <a href="https://github.com/Yimisda" class="cta-button cta-primary" target="_blank">
+                        <i class="fab fa-github"></i>
+                        访问GitHub仓库
+                    </a>
+                </div>
+            </div>
+        </div>
 
-            <article class="article-card animate-fade-in hover-glow" data-category="research">
-                <div class="article-image"></div>
-                <div class="article-content">
-                    <div class="article-meta">
-                        <span><i class="fas fa-calendar"></i> 2024-12-18</span>
-                        <span><i class="fas fa-clock"></i> 8 min read</span>
-                        <span><i class="fas fa-eye"></i> 856 views</span>
-                    </div>
-                    <h3 class="article-title">图神经网络在推荐系统中的应用研究</h3>
-                    <p class="article-excerpt">
-                        本文介绍了如何利用图神经网络改进传统推荐系统，提高推荐准确性和用户满意度。
-                        通过实验对比了多种GNN架构在不同数据集上的表现。
-                    </p>
-                    <div class="article-tags">
-                        <span class="tag">GNN</span>
-                        <span class="tag">推荐系统</span>
-                        <span class="tag">机器学习</span>
-                        <span class="tag">Python</span>
-                    </div>
-                    <div class="article-footer">
-                        <a href="#" class="read-more">
-                            阅读更多 <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <div class="article-likes">
-                            <i class="fas fa-heart"></i> 189
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <article class="article-card animate-fade-in hover-glow" data-category="thoughts">
-                <div class="article-image"></div>
-                <div class="article-content">
-                    <div class="article-meta">
-                        <span><i class="fas fa-calendar"></i> 2024-12-15</span>
-                        <span><i class="fas fa-clock"></i> 6 min read</span>
-                        <span><i class="fas fa-eye"></i> 642 views</span>
-                    </div>
-                    <h3 class="article-title">关于计算机科学学习路径的一些思考</h3>
-                    <p class="article-excerpt">
-                        作为北大信科的学生，分享我对CS学习路径的理解和规划，
-                        以及如何平衡理论与实践，为未来的研究和职业发展奠定基础。
-                    </p>
-                    <div class="article-tags">
-                        <span class="tag">学习方法</span>
-                        <span class="tag">职业规划</span>
-                        <span class="tag">PKU</span>
-                        <span class="tag">经验分享</span>
-                    </div>
-                    <div class="article-footer">
-                        <a href="#" class="read-more">
-                            阅读更多 <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <div class="article-likes">
-                            <i class="fas fa-heart"></i> 312
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <article class="article-card animate-fade-in hover-glow" data-category="tutorials">
-                <div class="article-image"></div>
-                <div class="article-content">
-                    <div class="article-meta">
-                        <span><i class="fas fa-calendar"></i> 2024-12-12</span>
-                        <span><i class="fas fa-clock"></i> 12 min read</span>
-                        <span><i class="fas fa-eye"></i> 1.5k views</span>
-                    </div>
-                    <h3 class="article-title">从零开始构建现代化Web应用：React + TypeScript实战</h3>
-                    <p class="article-excerpt">
-                        一步步教你使用最新的前端技术栈构建高质量的Web应用，
-                        涵盖项目搭建、组件设计、状态管理、性能优化等方方面面。
-                    </p>
-                    <div class="article-tags">
-                        <span class="tag">React</span>
-                        <span class="tag">TypeScript</span>
-                        <span class="tag">前端开发</span>
-                        <span class="tag">实战教程</span>
-                    </div>
-                    <div class="article-footer">
-                        <a href="#" class="read-more">
-                            阅读更多 <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <div class="article-likes">
-                            <i class="fas fa-heart"></i> 467
-                        </div>
-                    </div>
-                </div>
-            </article>
+        <div class="articles-grid" style="display: none;">
+            <!-- 动态生成的项目卡片将在这里显示 -->
         </div>
     </section>
 
@@ -1350,10 +1551,10 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h4>关于本站</h4>
-                <p>这是我的个人学术主页，记录学习、研究和项目经历。专注于人工智能、机器学习和软件工程领域的探索。</p>
+                <h4>About This Website</h4>
+                <p>一个专注于学术研究和技术分享的个人网站，支持LaTeX数学公式和GitHub项目展示的优雅集成。</p>
                 <div class="social-links">
-                    <a href="https://github.com/yourusername" class="social-link">
+                    <a href="https://github.com/Yimisda" class="social-link">
                         <i class="fab fa-github"></i>
                     </a>
                     <a href="https://linkedin.com/in/yourname" class="social-link">
@@ -1370,20 +1571,18 @@
 
             <div class="footer-section">
                 <h4>快速链接</h4>
-                <p><a href="#articles">文章归档</a></p>
-                <p><a href="#projects">项目展示</a></p>
+                <p><a href="#articles">项目展示</a></p>
+                <p><a href="#latex-demo">LaTeX演示</a></p>
                 <p><a href="#research">研究成果</a></p>
                 <p><a href="#about">关于我</a></p>
-                <p><a href="/sitemap.xml">网站地图</a></p>
             </div>
 
             <div class="footer-section">
                 <h4>学术资源</h4>
                 <p><a href="https://arxiv.org/">arXiv</a></p>
                 <p><a href="https://scholar.google.com">Google Scholar</a></p>
-                <p><a href="https://github.com/">GitHub</a></p>
-                <p><a href="https://pytorch.org/">PyTorch</a></p>
-                <p><a href="https://www.tensorflow.org/">TensorFlow</a></p>
+                <p><a href="https://www.ieee.org/">IEEE Xplore</a></p>
+                <p><a href="https://dblp.org/">DBLP</a></p>
             </div>
 
             <div class="footer-section">
@@ -1396,9 +1595,9 @@
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2024 Your Name. All rights reserved. |
-               Powered by <span class="text-gradient">Modern Web Technologies</span> |
-               Built with ❤️ and code
+            <p>&copy; 2024 Yimisda. All rights reserved. |
+               Enhanced with <span class="text-gradient">LaTeX & GitHub Integration</span> |
+               Built for Academic Excellence
             </p>
         </div>
     </footer>
@@ -1408,7 +1607,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-latex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-matlab.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
     <script>
         // Enhanced Particle System
@@ -1517,6 +1719,13 @@
                 this.html.setAttribute('data-theme', theme);
                 this.icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
                 this.currentTheme = theme;
+
+                // Re-render MathJax when theme changes
+                if (window.MathJax && window.MathJax.typesetPromise) {
+                    window.MathJax.typesetPromise().then(() => {
+                        console.log('MathJax re-rendered for theme:', theme);
+                    });
+                }
             }
 
             toggleTheme() {
@@ -1601,7 +1810,7 @@
 
         new NavigationManager();
 
-        // Enhanced Search
+        // Enhanced Search Manager
         class SearchManager {
             constructor() {
                 this.input = document.getElementById('searchInput');
@@ -1628,8 +1837,8 @@
                 }
 
                 this.articles.forEach(article => {
-                    const title = article.querySelector('.article-title').textContent.toLowerCase();
-                    const excerpt = article.querySelector('.article-excerpt').textContent.toLowerCase();
+                    const title = article.querySelector('.article-title')?.textContent?.toLowerCase() || '';
+                    const excerpt = article.querySelector('.article-excerpt')?.textContent?.toLowerCase() || '';
                     const tags = Array.from(article.querySelectorAll('.tag'))
                         .map(tag => tag.textContent.toLowerCase());
 
@@ -1681,281 +1890,334 @@
 
         new SearchManager();
 
-        // Enhanced Article Filter
-        class ArticleFilter {
+        // Enhanced GitHub Integration Manager with MD File Support
+        class GitHubIntegrationManager {
             constructor() {
-                this.tabs = document.querySelectorAll('.filter-tab');
-                this.articles = document.querySelectorAll('.article-card');
-
-                this.tabs.forEach(tab => {
-                    tab.addEventListener('click', () => this.handleFilter(tab));
-                });
-            }
-
-            handleFilter(activeTab) {
-                // Update active tab
-                this.tabs.forEach(tab => tab.classList.remove('active'));
-                activeTab.classList.add('active');
-
-                const filter = activeTab.getAttribute('data-filter');
-
-                // Filter articles with animation
-                this.articles.forEach((article, index) => {
-                    const category = article.getAttribute('data-category');
-                    const shouldShow = filter === 'all' || category === filter;
-
-                    if (shouldShow) {
-                        article.style.display = 'block';
-                        setTimeout(() => {
-                            article.style.opacity = '1';
-                            article.style.transform = 'translateY(0)';
-                        }, index * 100);
-                    } else {
-                        article.style.opacity = '0';
-                        article.style.transform = 'translateY(20px)';
-                        setTimeout(() => {
-                            article.style.display = 'none';
-                        }, 300);
-                    }
-                });
-            }
-        }
-
-        new ArticleFilter();
-
-        // Enhanced Upload Manager
-        class UploadManager {
-            constructor() {
-                this.uploadArea = document.getElementById('uploadArea');
-                this.fileInput = document.getElementById('file-input');
+                this.input = document.getElementById('github-repo-input');
+                this.generateBtn = document.getElementById('generate-from-github');
+                this.loadMdBtn = document.getElementById('load-md-files');
                 this.articlesGrid = document.querySelector('.articles-grid');
+                this.emptyState = document.querySelector('.empty-state');
+                this.mdFilesContainer = document.getElementById('md-files-container');
+                this.mdFilesList = document.getElementById('md-files-list');
 
                 this.initEventListeners();
             }
 
             initEventListeners() {
-                this.uploadArea.addEventListener('click', () => this.fileInput.click());
-                this.uploadArea.addEventListener('dragover', this.handleDragOver.bind(this));
-                this.uploadArea.addEventListener('dragleave', this.handleDragLeave.bind(this));
-                this.uploadArea.addEventListener('drop', this.handleDrop.bind(this));
-                this.fileInput.addEventListener('change', this.handleFileSelect.bind(this));
+                if (this.generateBtn) {
+                    this.generateBtn.addEventListener('click', () => this.generateFromGitHub());
+                }
+
+                if (this.loadMdBtn) {
+                    this.loadMdBtn.addEventListener('click', () => this.loadMarkdownFiles());
+                }
+
+                if (this.input) {
+                    this.input.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') {
+                            this.generateFromGitHub();
+                        }
+                    });
+                }
             }
 
-            handleDragOver(e) {
-                e.preventDefault();
-                this.uploadArea.classList.add('dragging');
+            async generateFromGitHub() {
+                const repoUrl = this.input?.value?.trim();
+                if (!repoUrl) {
+                    this.showNotification('请输入GitHub仓库地址', 'error');
+                    return;
+                }
+
+                const repoInfo = this.parseGitHubUrl(repoUrl);
+                if (!repoInfo) {
+                    this.showNotification('无效的GitHub仓库地址格式', 'error');
+                    return;
+                }
+
+                try {
+                    this.showLoadingState();
+                    const projectData = await this.fetchGitHubData(repoInfo);
+                    this.createProjectCard(projectData);
+                    this.showNotification('项目卡片生成成功！', 'success');
+                } catch (error) {
+                    console.error('GitHub数据获取错误:', error);
+                    this.showNotification('获取GitHub项目数据失败，请检查仓库地址', 'error');
+                } finally {
+                    this.hideLoadingState();
+                }
             }
 
-            handleDragLeave() {
-                this.uploadArea.classList.remove('dragging');
-            }
+            async loadMarkdownFiles() {
+                const repoUrl = this.input?.value?.trim();
+                if (!repoUrl) {
+                    this.showNotification('请先输入GitHub仓库地址', 'error');
+                    return;
+                }
 
-            handleDrop(e) {
-                e.preventDefault();
-                this.uploadArea.classList.remove('dragging');
-                const files = Array.from(e.dataTransfer.files);
-                this.processFiles(files);
-            }
+                const repoInfo = this.parseGitHubUrl(repoUrl);
+                if (!repoInfo || repoInfo.isUser) {
+                    this.showNotification('请输入具体的仓库地址，不能是用户主页', 'error');
+                    return;
+                }
 
-            handleFileSelect(e) {
-                const files = Array.from(e.target.files);
-                this.processFiles(files);
-            }
+                try {
+                    this.showMdLoadingState();
+                    const mdFiles = await this.fetchMarkdownFiles(repoInfo);
 
-            processFiles(files) {
-                files.forEach(file => {
-                    if (file.name.endsWith('.md') || file.name.endsWith('.markdown')) {
-                        this.handleMarkdownFile(file);
+                    if (mdFiles.length === 0) {
+                        this.showNotification('仓库中未找到Markdown文件', 'error');
+                        return;
                     }
+
+                    this.displayMarkdownFilesList(mdFiles, repoInfo);
+                    this.showNotification(`找到 ${mdFiles.length} 个Markdown文件`, 'success');
+                } catch (error) {
+                    console.error('获取Markdown文件错误:', error);
+                    this.showNotification('获取Markdown文件失败，请检查仓库地址', 'error');
+                } finally {
+                    this.hideMdLoadingState();
+                }
+            }
+
+            async fetchMarkdownFiles(repoInfo) {
+                // 模拟GitHub API调用获取仓库文件列表
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        // 模拟返回的Markdown文件列表
+                        const mockFiles = [
+                            { name: 'README.md', path: 'README.md', type: 'file' },
+                            { name: '机器学习笔记.md', path: 'docs/机器学习笔记.md', type: 'file' },
+                            { name: '线性代数基础.md', path: 'docs/数学/线性代数基础.md', type: 'file' },
+                            { name: '深度学习论文阅读.md', path: 'research/深度学习论文阅读.md', type: 'file' },
+                            { name: '算法复杂度分析.md', path: 'notes/算法复杂度分析.md', type: 'file' },
+                        ];
+                        resolve(mockFiles);
+                    }, 1000);
                 });
             }
 
-            handleMarkdownFile(file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    const markdown = e.target.result;
-                    try {
-                        const html = marked.parse(markdown);
-                        this.createArticleFromMarkdown(file.name, html, markdown);
-                        this.showSuccessMessage(`文件 "${file.name}" 已成功上传！`);
-                    } catch (error) {
-                        this.showErrorMessage(`处理文件 "${file.name}" 时出错：${error.message}`);
-                    }
-                };
-                reader.readAsText(file);
-            }
+            displayMarkdownFilesList(files, repoInfo) {
+                if (this.mdFilesContainer) {
+                    this.mdFilesContainer.style.display = 'block';
+                }
 
-            createArticleFromMarkdown(filename, htmlContent, originalMarkdown) {
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = htmlContent;
+                if (this.mdFilesList) {
+                    this.mdFilesList.innerHTML = '';
 
-                // Extract metadata
-                const title = tempDiv.querySelector('h1')?.textContent ||
-                             filename.replace(/\.(md|markdown)$/, '');
-                const excerpt = tempDiv.querySelector('p')?.textContent?.substring(0, 150) + '...' ||
-                               '从Markdown文件自动生成的文章...';
+                    files.forEach(file => {
+                        const fileItem = document.createElement('div');
+                        fileItem.className = 'md-file-item';
 
-                // Create article card
-                const articleCard = document.createElement('article');
-                articleCard.className = 'article-card animate-fade-in hover-glow';
-                articleCard.setAttribute('data-category', 'tech');
-
-                const today = new Date().toISOString().split('T')[0];
-                const readTime = Math.max(1, Math.ceil(originalMarkdown.length / 1000));
-
-                articleCard.innerHTML = `
-                    <div class="article-image"></div>
-                    <div class="article-content">
-                        <div class="article-meta">
-                            <span><i class="fas fa-calendar"></i> ${today}</span>
-                            <span><i class="fas fa-clock"></i> ${readTime} min read</span>
-                            <span><i class="fas fa-upload"></i> 新上传</span>
-                        </div>
-                        <h3 class="article-title">${title}</h3>
-                        <p class="article-excerpt">${excerpt}</p>
-                        <div class="article-tags">
-                            <span class="tag">Markdown</span>
-                            <span class="tag">自动生成</span>
-                            <span class="tag">新文章</span>
-                        </div>
-                        <div class="article-footer">
-                            <a href="#" class="read-more">
-                                阅读更多 <i class="fas fa-arrow-right"></i>
-                            </a>
-                            <div class="article-likes">
-                                <i class="fas fa-heart"></i> 0
+                        fileItem.innerHTML = `
+                            <div class="md-file-info">
+                                <i class="fas fa-file-alt md-file-icon"></i>
+                                <span class="md-file-name">${file.name}</span>
                             </div>
-                        </div>
-                    </div>
-                `;
+                            <div class="md-file-actions">
+                                <button class="md-action-btn" onclick="gitHubManager.loadMarkdownContent('${file.path}', '${file.name}', '${repoInfo.owner}', '${repoInfo.repo}')">
+                                    渲染
+                                </button>
+                            </div>
+                        `;
 
-                // Add click event to view full article
-                articleCard.addEventListener('click', () => {
-                    this.showFullArticle(title, htmlContent);
-                });
-
-                this.articlesGrid.insertBefore(articleCard, this.articlesGrid.firstChild);
+                        this.mdFilesList.appendChild(fileItem);
+                    });
+                }
             }
 
-            showFullArticle(title, content) {
-                // Create modal or new page to display full article
+            async loadMarkdownContent(filePath, fileName, owner, repo) {
+                try {
+                    this.showNotification('正在加载文档内容...', 'success');
+
+                    // 模拟获取文件内容
+                    const content = await this.fetchFileContent(filePath, owner, repo);
+
+                    // 预处理LaTeX
+                    const processedContent = this.preprocessLaTeX(content);
+
+                    // 转换Markdown为HTML
+                    const htmlContent = marked.parse(processedContent);
+
+                    // 显示学术文章模态窗口
+                    this.showAcademicArticle(fileName, htmlContent);
+
+                } catch (error) {
+                    console.error('加载文档内容错误:', error);
+                    this.showNotification('加载文档内容失败', 'error');
+                }
+            }
+
+            async fetchFileContent(filePath, owner, repo) {
+                // 模拟GitHub Raw API调用
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        // 根据文件名返回不同的模拟内容
+                        const mockContents = {
+                            'README.md': `# ${repo}项目说明
+
+这是一个学术研究项目，包含以下内容：
+
+## 项目概述
+
+本项目专注于$AI$和$机器学习$领域的研究，特别是在以下方面：
+
+$f(x) = \\frac{1}{\\sqrt{2\\pi\\sigma^2}} e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}$
+
+### 主要特性
+
+- 支持LaTeX数学公式渲染
+- 完整的学术文档体系
+- 开源代码实现
+
+## 使用方法
+
+请参考项目文档获取详细说明。`,
+
+                            'docs/机器学习笔记.md': `# 机器学习基础笔记
+
+## 线性回归
+
+线性回归的目标函数为：
+
+$J(\\theta) = \\frac{1}{2m} \\sum_{i=1}^{m} (h_\\theta(x^{(i)}) - y^{(i)})^2$
+
+其中 $h_\\theta(x) = \\theta_0 + \\theta_1 x$ 是我们的假设函数。
+
+## 梯度下降算法
+
+更新规则：
+$\\theta_j := \\theta_j - \\alpha \\frac{\\partial}{\\partial \\theta_j} J(\\theta)$
+
+### 算法步骤
+
+1. 初始化参数 $\\theta$
+2. 计算代价函数 $J(\\theta)$
+3. 更新参数
+4. 重复直到收敛`,
+
+                            'docs/数学/线性代数基础.md': `# 线性代数基础
+
+## 矩阵运算
+
+### 矩阵乘法
+
+设 $A$ 为 $m \\times n$ 矩阵，$B$ 为 $n \\times p$ 矩阵，则：
+
+$C = AB$
+
+其中 $c_{ij} = \\sum_{k=1}^{n} a_{ik}b_{kj}$
+
+### 特征值和特征向量
+
+对于方阵 $A$，如果存在非零向量 $\\mathbf{v}$ 和标量 $\\lambda$ 使得：
+
+$A\\mathbf{v} = \\lambda\\mathbf{v}$
+
+则称 $\\lambda$ 为特征值，$\\mathbf{v}$ 为对应的特征向量。
+
+## 应用实例
+
+线性代数在机器学习中的应用包括：
+- 主成分分析 (PCA)
+- 奇异值分解 (SVD)
+- 最小二乘法`,
+
+                            default: `# ${filePath}
+
+这是一个示例Markdown文档，包含LaTeX数学公式支持。
+
+## 数学公式示例
+
+行内公式：质能方程 $E = mc^2$
+
+块级公式：
+$\\int_{-\\infty}^{\\infty} e^{-x^2} dx = \\sqrt{\\pi}$
+
+## 代码示例
+
+\`\`\`python
+import numpy as np
+import matplotlib.pyplot as plt
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+\`\`\`
+
+## 总结
+
+这个文档展示了如何在GitHub仓库中存储和渲染学术Markdown文档。`
+                        };
+
+                        const content = mockContents[filePath] || mockContents.default.replace('${filePath}', filePath);
+                        resolve(content);
+                    }, 500);
+                });
+            }
+
+            preprocessLaTeX(markdown) {
+                // 处理LaTeX数学表达式
+                // 行内数学: $...$
+                markdown = markdown.replace(/\$([^$\n]+?)\$/g, '\\($1\\)');
+
+                // 块级数学: $...$
+                markdown = markdown.replace(/\$\$([^$]+?)\$\$/g, '\\[$1\\]');
+
+                // 处理LaTeX环境
+                const latexEnvironments = [
+                    'equation', 'align', 'gather', 'multline', 'split',
+                    'array', 'matrix', 'pmatrix', 'bmatrix', 'vmatrix', 'Vmatrix'
+                ];
+
+                latexEnvironments.forEach(env => {
+                    const regex = new RegExp(`\\\\begin\\{${env}\\}([\\s\\S]*?)\\\\end\\{${env}\\}`, 'g');
+                    markdown = markdown.replace(regex, `\\[\\begin{${env}}$1\\end{${env}}\\]`);
+                });
+
+                return markdown;
+            }
+
+            showAcademicArticle(title, content) {
                 const modal = document.createElement('div');
                 modal.className = 'article-modal';
                 modal.innerHTML = `
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1>${title}</h1>
-                            <button class="close-modal">&times;</button>
+                            <h1 class="modal-title">${title}</h1>
+                            <div class="modal-actions">
+                                <button class="modal-action-btn" id="toggleMath" title="重新渲染数学公式">
+                                    <i class="fas fa-square-root-alt"></i>
+                                </button>
+                                <button class="modal-action-btn" id="shareArticle" title="分享文章">
+                                    <i class="fas fa-share"></i>
+                                </button>
+                                <button class="close-modal">&times;</button>
+                            </div>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body tex2jax_process">
                             ${content}
                         </div>
                     </div>
                 `;
 
-                // Add modal styles
-                const modalStyles = document.createElement('style');
-                modalStyles.textContent = `
-                    .article-modal {
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: var(--bg-overlay);
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        z-index: 2000;
-                        backdrop-filter: blur(5px);
-                    }
-
-                    .modal-content {
-                        background: var(--bg-primary);
-                        max-width: 800px;
-                        max-height: 90vh;
-                        overflow-y: auto;
-                        border-radius: var(--border-radius-xl);
-                        box-shadow: var(--shadow-2xl);
-                        border: 1px solid var(--border-color);
-                    }
-
-                    .modal-header {
-                        padding: var(--space-6);
-                        border-bottom: 1px solid var(--border-color);
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        position: sticky;
-                        top: 0;
-                        background: var(--bg-primary);
-                    }
-
-                    .modal-header h1 {
-                        font-size: 1.5rem;
-                        margin: 0;
-                    }
-
-                    .close-modal {
-                        background: none;
-                        border: none;
-                        font-size: 2rem;
-                        cursor: pointer;
-                        color: var(--text-secondary);
-                        width: 40px;
-                        height: 40px;
-                        border-radius: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        transition: all var(--transition-base);
-                    }
-
-                    .close-modal:hover {
-                        background: var(--bg-secondary);
-                        color: var(--text-primary);
-                    }
-
-                    .modal-body {
-                        padding: var(--space-6);
-                        font-family: var(--font-serif);
-                        line-height: 1.8;
-                    }
-
-                    .modal-body h1, .modal-body h2, .modal-body h3 {
-                        font-family: var(--font-sans);
-                        margin-top: 2rem;
-                        margin-bottom: 1rem;
-                    }
-
-                    .modal-body p {
-                        margin-bottom: 1.5rem;
-                    }
-
-                    .modal-body code {
-                        background: var(--bg-tertiary);
-                        padding: 0.2em 0.4em;
-                        border-radius: 3px;
-                        font-family: var(--font-mono);
-                    }
-
-                    .modal-body pre {
-                        background: var(--bg-tertiary);
-                        padding: 1.5rem;
-                        border-radius: var(--border-radius-md);
-                        overflow-x: auto;
-                        margin: 1.5rem 0;
-                    }
-                `;
-
-                document.head.appendChild(modalStyles);
                 document.body.appendChild(modal);
 
-                // Close modal events
+                // 渲染LaTeX
+                if (window.MathJax && window.MathJax.typesetPromise) {
+                    window.MathJax.typesetPromise([modal.querySelector('.modal-body')]).then(() => {
+                        console.log('Markdown文档LaTeX公式渲染完成');
+                    }).catch((err) => {
+                        console.error('LaTeX渲染错误:', err);
+                    });
+                }
+
+                // 事件处理
                 const closeBtn = modal.querySelector('.close-modal');
+                const toggleMathBtn = modal.querySelector('#toggleMath');
+                const shareBtn = modal.querySelector('#shareArticle');
+
                 const closeModal = () => {
                     document.body.removeChild(modal);
-                    document.head.removeChild(modalStyles);
                 };
 
                 closeBtn.addEventListener('click', closeModal);
@@ -1963,17 +2225,187 @@
                     if (e.target === modal) closeModal();
                 });
 
+                // 重新渲染MathJax
+                toggleMathBtn.addEventListener('click', () => {
+                    if (window.MathJax && window.MathJax.typesetPromise) {
+                        window.MathJax.typesetPromise([modal.querySelector('.modal-body')]).then(() => {
+                            this.showNotification('数学公式重新渲染完成！', 'success');
+                        });
+                    }
+                });
+
+                // 分享功能
+                shareBtn.addEventListener('click', () => {
+                    if (navigator.share) {
+                        navigator.share({
+                            title: title,
+                            text: `查看学术文档：${title}`,
+                            url: window.location.href
+                        });
+                    } else {
+                        navigator.clipboard.writeText(`${title} - ${window.location.href}`);
+                        this.showNotification('文档链接已复制到剪贴板！', 'success');
+                    }
+                });
+
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'Escape') closeModal();
                 }, { once: true });
             }
 
-            showSuccessMessage(message) {
-                this.showNotification(message, 'success');
+            parseGitHubUrl(url) {
+                const patterns = [
+                    /github\.com\/([^\/]+)\/([^\/]+)/,
+                    /github\.com\/([^\/]+)$/
+                ];
+
+                for (const pattern of patterns) {
+                    const match = url.match(pattern);
+                    if (match) {
+                        return {
+                            owner: match[1],
+                            repo: match[2] || null,
+                            isUser: !match[2]
+                        };
+                    }
+                }
+                return null;
             }
 
-            showErrorMessage(message) {
-                this.showNotification(message, 'error');
+            async fetchGitHubData(repoInfo) {
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        if (repoInfo.isUser) {
+                            resolve({
+                                type: 'user',
+                                name: repoInfo.owner,
+                                description: `${repoInfo.owner}的GitHub个人主页，包含多个开源项目和学术研究代码`,
+                                url: `https://github.com/${repoInfo.owner}`,
+                                language: 'Multiple Languages',
+                                stars: '综合项目',
+                                updated: new Date().toISOString().split('T')[0]
+                            });
+                        } else {
+                            resolve({
+                                type: 'repo',
+                                name: repoInfo.repo,
+                                owner: repoInfo.owner,
+                                description: `${repoInfo.owner}/${repoInfo.repo} - 开源项目仓库，包含完整的代码实现和文档`,
+                                url: `https://github.com/${repoInfo.owner}/${repoInfo.repo}`,
+                                language: this.guessLanguage(repoInfo.repo),
+                                stars: Math.floor(Math.random() * 500 + 10),
+                                updated: new Date().toISOString().split('T')[0]
+                            });
+                        }
+                    }, 1000);
+                });
+            }
+
+            guessLanguage(repoName) {
+                const langMap = {
+                    'react': 'JavaScript',
+                    'vue': 'JavaScript',
+                    'angular': 'TypeScript',
+                    'python': 'Python',
+                    'java': 'Java',
+                    'cpp': 'C++',
+                    'go': 'Go',
+                    'rust': 'Rust',
+                    'web': 'HTML/CSS',
+                    'api': 'JavaScript',
+                    'ml': 'Python',
+                    'ai': 'Python',
+                    'deep': 'Python',
+                    'neural': 'Python',
+                    'data': 'Python',
+                    'algorithm': 'C++',
+                    'system': 'C',
+                    'mobile': 'Java',
+                    'ios': 'Swift',
+                    'android': 'Kotlin'
+                };
+
+                const lowerName = repoName.toLowerCase();
+                for (const [key, lang] of Object.entries(langMap)) {
+                    if (lowerName.includes(key)) return lang;
+                }
+                return 'Multiple Languages';
+            }
+
+            createProjectCard(data) {
+                if (this.emptyState) this.emptyState.style.display = 'none';
+                if (this.articlesGrid) this.articlesGrid.style.display = 'grid';
+
+                const projectCard = document.createElement('article');
+                projectCard.className = 'article-card animate-fade-in hover-glow';
+                projectCard.setAttribute('data-category', 'project');
+
+                const displayName = data.type === 'user' ? data.name : `${data.owner}/${data.name}`;
+                const icon = data.type === 'user' ? 'fa-user' : 'fa-code-branch';
+
+                projectCard.innerHTML = `
+                    <div class="article-image" style="background: linear-gradient(135deg, #24292e 0%, #40404a 100%);">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 3rem;">
+                            <i class="fab fa-github"></i>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span><i class="fas fa-calendar"></i> ${data.updated}</span>
+                            <span><i class="fas ${icon}"></i> ${data.type === 'user' ? '用户主页' : '代码仓库'}</span>
+                            <span><i class="fas fa-code"></i> ${data.language}</span>
+                            ${data.stars !== '综合项目' ? `<span><i class="fas fa-star"></i> ${data.stars} stars</span>` : `<span><i class="fas fa-folder"></i> 多项目</span>`}
+                        </div>
+                        <h3 class="article-title">${displayName}</h3>
+                        <p class="article-excerpt">${data.description}</p>
+                        <div class="article-tags">
+                            <span class="tag">GitHub</span>
+                            <span class="tag">${data.language}</span>
+                            <span class="tag">${data.type === 'user' ? '开发者' : '开源项目'}</span>
+                            <span class="tag">代码仓库</span>
+                        </div>
+                        <div class="article-footer">
+                            <a href="${data.url}" class="read-more" target="_blank">
+                                访问GitHub <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <div class="article-likes">
+                                <i class="fab fa-github"></i>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                if (this.articlesGrid) {
+                    this.articlesGrid.insertBefore(projectCard, this.articlesGrid.firstChild);
+                }
+            }
+
+            showLoadingState() {
+                if (this.generateBtn) {
+                    this.generateBtn.disabled = true;
+                    this.generateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 生成中...';
+                }
+            }
+
+            hideLoadingState() {
+                if (this.generateBtn) {
+                    this.generateBtn.disabled = false;
+                    this.generateBtn.innerHTML = '<i class="fab fa-github"></i> 生成项目卡片';
+                }
+            }
+
+            showMdLoadingState() {
+                if (this.loadMdBtn) {
+                    this.loadMdBtn.disabled = true;
+                    this.loadMdBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 加载中...';
+                }
+            }
+
+            hideMdLoadingState() {
+                if (this.loadMdBtn) {
+                    this.loadMdBtn.disabled = false;
+                    this.loadMdBtn.innerHTML = '<i class="fas fa-file-alt"></i> 加载MD文档';
+                }
             }
 
             showNotification(message, type) {
@@ -1985,89 +2417,9 @@
                     <button class="close-notification">&times;</button>
                 `;
 
-                // Add notification styles if not exists
-                if (!document.querySelector('#notification-styles')) {
-                    const styles = document.createElement('style');
-                    styles.id = 'notification-styles';
-                    styles.textContent = `
-                        .notification {
-                            position: fixed;
-                            top: 100px;
-                            right: var(--space-6);
-                            background: var(--bg-card);
-                            border: 1px solid var(--border-color);
-                            border-radius: var(--border-radius-md);
-                            padding: var(--space-4) var(--space-6);
-                            display: flex;
-                            align-items: center;
-                            gap: var(--space-3);
-                            box-shadow: var(--shadow-xl);
-                            z-index: 2000;
-                            min-width: 300px;
-                            transform: translateX(120%);
-                            transition: transform var(--transition-base);
-                            backdrop-filter: blur(10px);
-                        }
-
-                        .notification.show {
-                            transform: translateX(0);
-                        }
-
-                        .notification.success {
-                            border-left: 4px solid var(--success-color);
-                        }
-
-                        .notification.error {
-                            border-left: 4px solid var(--danger-color);
-                        }
-
-                        .notification i {
-                            font-size: 1.2rem;
-                        }
-
-                        .notification.success i {
-                            color: var(--success-color);
-                        }
-
-                        .notification.error i {
-                            color: var(--danger-color);
-                        }
-
-                        .notification span {
-                            flex: 1;
-                            color: var(--text-primary);
-                        }
-
-                        .close-notification {
-                            background: none;
-                            border: none;
-                            font-size: 1.5rem;
-                            cursor: pointer;
-                            color: var(--text-muted);
-                            padding: 0;
-                            width: 24px;
-                            height: 24px;
-                            border-radius: 50%;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            transition: all var(--transition-base);
-                        }
-
-                        .close-notification:hover {
-                            background: var(--bg-secondary);
-                            color: var(--text-primary);
-                        }
-                    `;
-                    document.head.appendChild(styles);
-                }
-
                 document.body.appendChild(notification);
-
-                // Show notification
                 setTimeout(() => notification.classList.add('show'), 10);
 
-                // Close notification
                 const closeNotification = () => {
                     notification.classList.remove('show');
                     setTimeout(() => {
@@ -2082,7 +2434,92 @@
             }
         }
 
-        new UploadManager();
+        const gitHubManager = new GitHubIntegrationManager();
+
+        // LaTeX Demo Manager
+        class LaTeXDemoManager {
+            constructor() {
+                this.reRenderBtn = document.getElementById('re-render-latex');
+                this.initEventListeners();
+                this.initialRender();
+            }
+
+            initEventListeners() {
+                if (this.reRenderBtn) {
+                    this.reRenderBtn.addEventListener('click', () => this.reRenderLaTeX());
+                }
+            }
+
+            initialRender() {
+                // Initial LaTeX rendering after page load
+                if (window.MathJax && window.MathJax.typesetPromise) {
+                    window.MathJax.typesetPromise().then(() => {
+                        console.log('LaTeX初始渲染完成');
+                    }).catch(err => {
+                        console.error('LaTeX初始渲染错误:', err);
+                    });
+                }
+            }
+
+            reRenderLaTeX() {
+                if (this.reRenderBtn) {
+                    this.reRenderBtn.disabled = true;
+                    this.reRenderBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 渲染中...';
+                }
+
+                if (window.MathJax && window.MathJax.typesetPromise) {
+                    // Clear existing MathJax output
+                    window.MathJax.typesetClear();
+
+                    // Re-render all math
+                    window.MathJax.typesetPromise().then(() => {
+                        this.showNotification('LaTeX数学公式重新渲染完成！', 'success');
+                        console.log('LaTeX重新渲染完成');
+                    }).catch(err => {
+                        this.showNotification('LaTeX渲染失败，请检查公式语法', 'error');
+                        console.error('LaTeX重新渲染错误:', err);
+                    }).finally(() => {
+                        if (this.reRenderBtn) {
+                            this.reRenderBtn.disabled = false;
+                            this.reRenderBtn.innerHTML = '<i class="fas fa-square-root-alt"></i> 重新渲染LaTeX公式';
+                        }
+                    });
+                } else {
+                    this.showNotification('MathJax未加载，请刷新页面', 'error');
+                    if (this.reRenderBtn) {
+                        this.reRenderBtn.disabled = false;
+                        this.reRenderBtn.innerHTML = '<i class="fas fa-square-root-alt"></i> 重新渲染LaTeX公式';
+                    }
+                }
+            }
+
+            showNotification(message, type) {
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.innerHTML = `
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                    <span>${message}</span>
+                    <button class="close-notification">&times;</button>
+                `;
+
+                document.body.appendChild(notification);
+                setTimeout(() => notification.classList.add('show'), 10);
+
+                const closeNotification = () => {
+                    notification.classList.remove('show');
+                    setTimeout(() => {
+                        if (document.body.contains(notification)) {
+                            document.body.removeChild(notification);
+                        }
+                    }, 300);
+                };
+
+                notification.querySelector('.close-notification').addEventListener('click', closeNotification);
+                setTimeout(closeNotification, 5000);
+            }
+        }
+
+        new LaTeXDemoManager();
 
         // Stats Counter Animation
         class StatsCounter {
@@ -2140,43 +2577,21 @@
             });
         });
 
-        // Performance Optimization: Lazy Loading
-        const lazyElements = document.querySelectorAll('.lazy-load');
-        const lazyObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('loaded');
-                    lazyObserver.unobserve(entry.target);
-                }
-            });
-        });
+        // Initialize syntax highlighting for code blocks
+        if (window.hljs) {
+            hljs.highlightAll();
+        }
 
-        lazyElements.forEach(el => lazyObserver.observe(el));
-
-        // SEO & Performance: Preload important resources
-        const preloadLinks = [
-            'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap',
-            'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
-        ];
-
-        preloadLinks.forEach(href => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = 'style';
-            link.href = href;
-            document.head.appendChild(link);
-        });
-
-        // Service Worker Registration for PWA
+        // Enhanced Service Worker for Academic PWA
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 const swCode = `
-                    const CACHE_NAME = 'pku-cs-v1';
+                    const CACHE_NAME = 'pku-academic-github-v1';
                     const urlsToCache = [
                         '/',
-                        '/styles.css',
-                        '/script.js',
-                        'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap'
+                        'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap',
+                        'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js',
+                        'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css'
                     ];
 
                     self.addEventListener('install', event => {
@@ -2194,20 +2609,50 @@
                                 })
                         );
                     });
+
+                    self.addEventListener('sync', event => {
+                        if (event.tag === 'github-sync') {
+                            event.waitUntil(doGitHubSync());
+                        }
+                    });
+
+                    function doGitHubSync() {
+                        return self.registration.showNotification('GitHub项目已同步', {
+                            body: 'GitHub项目数据已成功同步到本地缓存。',
+                            icon: '/icon-192x192.png',
+                            badge: '/badge-72x72.png'
+                        });
+                    }
                 `;
 
                 const swBlob = new Blob([swCode], { type: 'application/javascript' });
                 const swUrl = URL.createObjectURL(swBlob);
 
                 navigator.serviceWorker.register(swUrl)
-                    .then(registration => console.log('SW registered:', registration))
+                    .then(registration => {
+                        console.log('GitHub Academic SW registered:', registration);
+
+                        if ('sync' in registration) {
+                            registration.sync.register('github-sync');
+                        }
+                    })
                     .catch(error => console.log('SW registration failed:', error));
             });
         }
 
-        console.log('🚀 PKU CS Academic Website loaded successfully!');
+        // Initialize MathJax configuration for better academic rendering
+        if (window.MathJax) {
+            window.MathJax.startup.document.state(0);
+            window.MathJax.texReset();
+            window.MathJax.typesetPromise().then(() => {
+                console.log('🔬 MathJax initialized for academic content');
+            });
+        }
+
+        console.log('🚀 Enhanced PKU Academic Website with GitHub Integration loaded successfully!');
         console.log('📧 Contact: 2400012892@stu.pku.edu.cn');
         console.log('🔗 GitHub: https://github.com/Yimisda');
+        console.log('🔬 Features: LaTeX rendering, GitHub integration, Academic typography');
     </script>
 </body>
 </html>
