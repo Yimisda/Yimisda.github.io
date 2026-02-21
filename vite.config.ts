@@ -4,8 +4,8 @@ import { defineConfig } from "vite"
 
 // https://vite.dev/config/
 export default defineConfig({
-  // GitHub Pages requires relative paths or repo name as base
-  base: './',
+  // For username.github.io repos, use root path
+  base: '/',
   plugins: [react()],
   resolve: {
     alias: {
