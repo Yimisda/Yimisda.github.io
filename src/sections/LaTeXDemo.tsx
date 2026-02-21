@@ -1,51 +1,81 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Calculator, RefreshCw, Copy, Check } from 'lucide-react';
-import 'katex/dist/katex.min.css';
-import { InlineMath, BlockMath } from 'react-katex';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useState } from "react"
+import { motion } from "framer-motion"
+import { Calculator, RefreshCw, Copy, Check } from "lucide-react"
+import "katex/dist/katex.min.css"
+import { InlineMath, BlockMath } from "react-katex"
+import { useScrollAnimation } from "@/hooks/useScrollAnimation"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 const latexExamples = {
   inline: [
-    { name: '欧拉公式', latex: 'e^{i\pi} + 1 = 0' },
-    { name: '质能方程', latex: 'E = mc^2' },
-    { name: '勾股定理', latex: 'a^2 + b^2 = c^2' },
+    { name: "Euler Identity", latex: "e^{i\\pi} + 1 = 0" },
+    { name: "Mass-Energy", latex: "E = mc^2" },
+    { name: "Pythagorean", latex: "a^2 + b^2 = c^2" },
   ],
   block: [
-    { name: '高斯积分', latex: '\\int_{-\\infty}^{\\infty} e^{-x^2} dx = \\sqrt{\\pi}' },
-    { name: '泰勒展开', latex: 'e^x = \\sum_{n=0}^{\\infty} \\frac{x^n}{n!} = 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\cdots' },
-    { name: '傅里叶变换', latex: '\\hat{f}(\\xi) = \\int_{-\\infty}^{\\infty} f(x) e^{-2\\pi i x \\xi} dx' },
+    {
+      name: "Gaussian Integral",
+      latex: "\\int_{-\\infty}^{\\infty} e^{-x^2} dx = \\sqrt{\\pi}",
+    },
+    {
+      name: "Exponential Series",
+      latex:
+        "e^x = \\sum_{n=0}^{\\infty} \\frac{x^n}{n!} = 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\cdots",
+    },
+    {
+      name: "Fourier Transform",
+      latex:
+        "\\hat{f}(\\xi) = \\int_{-\\infty}^{\\infty} f(x) e^{-2\\pi i x \\xi} dx",
+    },
   ],
   matrix: [
-    { name: '矩阵乘法', latex: '\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} ax + by \\\\ cx + dy \\end{pmatrix}' },
-    { name: '行列式', latex: '\\det(A) = \\begin{vmatrix} a_{11} & a_{12} & a_{13} \\\\ a_{21} & a_{22} & a_{23} \\\\ a_{31} & a_{32} & a_{33} \\end{vmatrix}' },
+    {
+      name: "Linear System",
+      latex:
+        "\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} ax + by \\\\ cx + dy \\end{pmatrix}",
+    },
+    {
+      name: "Determinant",
+      latex:
+        "\\det(A) = \\begin{vmatrix} a_{11} & a_{12} & a_{13} \\\\ a_{21} & a_{22} & a_{23} \\\\ a_{31} & a_{32} & a_{33} \\end{vmatrix}",
+    },
   ],
   advanced: [
-    { name: '偏微分方程', latex: '\\frac{\\partial}{\\partial t} \\int_{\\Omega} u \\, dx = \\int_{\\partial \\Omega} F \\cdot n \\, dS' },
-    { name: '麦克斯韦方程', latex: '\\nabla \\times \\mathbf{E} = -\\frac{\\partial \\mathbf{B}}{\\partial t}' },
-    { name: '薛定谔方程', latex: 'i\\hbar \\frac{\\partial}{\\partial t} \\Psi(\\mathbf{r},t) = \\hat{H} \\Psi(\\mathbf{r},t)' },
+    {
+      name: "Divergence Theorem",
+      latex:
+        "\\frac{\\partial}{\\partial t} \\int_{\\Omega} u \\, dx = \\int_{\\partial \\Omega} F \\cdot n \\, dS",
+    },
+    {
+      name: "Maxwell Equation",
+      latex: "\\nabla \\times \\mathbf{E} = -\\frac{\\partial \\mathbf{B}}{\\partial t}",
+    },
+    {
+      name: "Schrodinger",
+      latex:
+        "i\\hbar \\frac{\\partial}{\\partial t} \\Psi(\\mathbf{r},t) = \\hat{H} \\Psi(\\mathbf{r},t)",
+    },
   ],
-};
+}
 
 function FormulaCard({
   name,
   latex,
   type,
 }: {
-  name: string;
-  latex: string;
-  type: 'inline' | 'block';
+  name: string
+  latex: string
+  type: "inline" | "block"
 }) {
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState(false)
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(latex);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+    await navigator.clipboard.writeText(latex)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
 
   return (
     <motion.div
@@ -71,7 +101,7 @@ function FormulaCard({
       </div>
 
       <div className="overflow-x-auto">
-        {type === 'inline' ? (
+        {type === "inline" ? (
           <div className="text-center py-2">
             <InlineMath math={latex} />
           </div>
@@ -82,24 +112,23 @@ function FormulaCard({
         )}
       </div>
     </motion.div>
-  );
+  )
 }
 
 export function LaTeXDemo() {
-  const [key, setKey] = useState(0);
+  const [key, setKey] = useState(0)
   const { ref, isVisible } = useScrollAnimation<HTMLDivElement>({
     threshold: 0.2,
     triggerOnce: true,
-  });
+  })
 
   const handleRerender = () => {
-    setKey(prev => prev + 1);
-  };
+    setKey((prev) => prev + 1)
+  }
 
   return (
     <section id="latex" className="section-padding bg-gray-50/50 dark:bg-gray-900/30">
       <div ref={ref} className="container-custom">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -108,17 +137,17 @@ export function LaTeXDemo() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 text-sm font-medium mb-4">
             <Calculator className="w-4 h-4" />
-            数学公式渲染
+            LaTeX Showcase
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            LaTeX 数学公式渲染测试
+            High-quality Math Rendering
           </h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            支持行内公式、块级公式、矩阵和复杂数学表达式的实时渲染
+            Examples rendered with KaTeX, including inline equations, block formulas,
+            matrices, and advanced expressions.
           </p>
         </motion.div>
 
-        {/* Main Content */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -129,16 +158,11 @@ export function LaTeXDemo() {
               <div className="flex items-center justify-between">
                 <CardTitle className="text-xl font-semibold flex items-center gap-2">
                   <Calculator className="w-5 h-5 text-indigo-500" />
-                  公式示例
+                  Formula Gallery
                 </CardTitle>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handleRerender}
-                  className="gap-2"
-                >
+                <Button variant="outline" size="sm" onClick={handleRerender} className="gap-2">
                   <RefreshCw className="w-4 h-4" />
-                  重新渲染
+                  Refresh
                 </Button>
               </div>
             </CardHeader>
@@ -146,10 +170,10 @@ export function LaTeXDemo() {
             <CardContent className="p-6">
               <Tabs defaultValue="inline" className="w-full">
                 <TabsList className="grid grid-cols-4 mb-6">
-                  <TabsTrigger value="inline">行内公式</TabsTrigger>
-                  <TabsTrigger value="block">块级公式</TabsTrigger>
-                  <TabsTrigger value="matrix">矩阵</TabsTrigger>
-                  <TabsTrigger value="advanced">高级表达式</TabsTrigger>
+                  <TabsTrigger value="inline">Inline</TabsTrigger>
+                  <TabsTrigger value="block">Block</TabsTrigger>
+                  <TabsTrigger value="matrix">Matrix</TabsTrigger>
+                  <TabsTrigger value="advanced">Advanced</TabsTrigger>
                 </TabsList>
 
                 {Object.entries(latexExamples).map(([category, formulas]) => (
@@ -165,7 +189,7 @@ export function LaTeXDemo() {
                           <FormulaCard
                             name={formula.name}
                             latex={formula.latex}
-                            type={category === 'inline' ? 'inline' : 'block'}
+                            type={category === "inline" ? "inline" : "block"}
                           />
                         </motion.div>
                       ))}
@@ -177,7 +201,6 @@ export function LaTeXDemo() {
           </Card>
         </motion.div>
 
-        {/* Features */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -185,9 +208,18 @@ export function LaTeXDemo() {
           className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4"
         >
           {[
-            { title: '实时渲染', desc: '基于 KaTeX 的高性能公式渲染' },
-            { title: '完整支持', desc: '支持各类数学符号和表达式' },
-            { title: '响应式设计', desc: '自适应各种屏幕尺寸' },
+            {
+              title: "Fast Rendering",
+              desc: "KaTeX renders large formulas quickly without layout shifts.",
+            },
+            {
+              title: "Accessible Output",
+              desc: "Math content remains selectable and screen-reader friendly.",
+            },
+            {
+              title: "Consistent Style",
+              desc: "Typography and spacing match the rest of the design system.",
+            },
           ].map((feature) => (
             <div
               key={feature.title}
@@ -204,5 +236,5 @@ export function LaTeXDemo() {
         </motion.div>
       </div>
     </section>
-  );
+  )
 }

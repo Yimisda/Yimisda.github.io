@@ -1,70 +1,77 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Yimisda - 北京大学信息科学技术学院学生个人主页。专注于人工智能、计算机视觉和学术研究。" />
-    <meta name="keywords" content="Yimisda, PKU, 北京大学, EECS, 人工智能, 计算机视觉, 学术研究" />
+    <meta
+      name="description"
+      content="Yimisda | PKU EECS. Research interests in memristive computing and neuromorphic systems."
+    />
+    <meta
+      name="keywords"
+      content="Yimisda, PKU, EECS, memristive computing, neuromorphic systems, portfolio"
+    />
     <meta name="author" content="Yimisda" />
     <meta name="theme-color" content="#6366f1" />
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Yimisda - PKU EECS" />
-    <meta property="og:description" content="北京大学信息科学技术学院学生个人主页" />
+
+    <meta property="og:title" content="Yimisda | PKU EECS" />
+    <meta
+      property="og:description"
+      content="Personal portfolio with research interests in memristive computing and neuromorphic systems."
+    />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://yimisda.github.io/" />
-    
-    <!-- Twitter Card -->
+
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Yimisda - PKU EECS" />
-    <meta name="twitter:description" content="北京大学信息科学技术学院学生个人主页" />
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%236366f1'/%3E%3Ctext x='50' y='65' font-size='50' text-anchor='middle' fill='white' font-family='Arial'%3EY%3C/text%3E%3C/svg%3E" />
-    
-    <title>Yimisda - PKU EECS | 北京大学信息科学技术学院</title>
-    
-    <!-- Preconnect for performance -->
+    <meta name="twitter:title" content="Yimisda | PKU EECS" />
+    <meta
+      name="twitter:description"
+      content="Personal portfolio with research interests in memristive computing and neuromorphic systems."
+    />
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%236366f1'/%3E%3Ctext x='50' y='65' font-size='50' text-anchor='middle' fill='white' font-family='Arial'%3EY%3C/text%3E%3C/svg%3E"
+    />
+
+    <title>Yimisda | PKU EECS</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    <!-- Structured Data -->
+
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Yimisda",
-      "affiliation": {
-        "@type": "Organization",
-        "name": "Peking University",
-        "department": "School of Electronics Engineering and Computer Science"
-      },
-      "url": "https://yimisda.github.io/",
-      "sameAs": [
-        "https://github.com/Yimisda"
-      ]
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Yimisda",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Peking University",
+          "department": "School of Electronics Engineering and Computer Science"
+        },
+        "url": "https://yimisda.github.io/",
+        "sameAs": ["https://github.com/Yimisda"]
+      }
     </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="./src/main.tsx"></script>
-    
-    <!-- GitHub Pages SPA redirect script -->
+
     <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
-      // MIT License
-      // https://github.com/rafgraph/spa-github-pages
-      (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + decoded + l.hash
-          );
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&');
+            })
+            .join('?');
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
         }
-      }(window.location))
+      })(window.location);
     </script>
   </body>
 </html>

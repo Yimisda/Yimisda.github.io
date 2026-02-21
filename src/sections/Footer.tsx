@@ -1,20 +1,19 @@
-import { Github, Mail, Linkedin, Twitter, Heart } from 'lucide-react';
+import { Github, Mail, Linkedin, Twitter, Heart } from "lucide-react"
 
 const socialLinks = [
-  { icon: Github, label: 'GitHub', url: 'https://github.com/Yimisda' },
-  { icon: Mail, label: 'Email', url: 'mailto:your.email@pku.edu.cn' },
-  { icon: Linkedin, label: 'LinkedIn', url: 'https://linkedin.com/in/yourname' },
-  { icon: Twitter, label: 'Twitter', url: 'https://twitter.com/yourname' },
-];
+  { icon: Github, label: "GitHub", url: "https://github.com/Yimisda" },
+  { icon: Mail, label: "Email", url: "mailto:your.email@pku.edu.cn" },
+  { icon: Linkedin, label: "LinkedIn", url: "https://linkedin.com/in/yourname" },
+  { icon: Twitter, label: "Twitter", url: "https://twitter.com/yourname" },
+]
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear()
 
   return (
     <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
       <div className="container-custom py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {/* Left - Brand */}
           <div>
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
               Yimisda
@@ -26,13 +25,12 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Middle - Quick Links */}
           <div>
             <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3 uppercase tracking-wider">
               Quick Links
             </h4>
             <ul className="space-y-2">
-              {['Home', 'Research', 'Projects', 'About'].map((item) => (
+              {["Home", "Research", "Projects", "About"].map((item) => (
                 <li key={item}>
                   <a
                     href={`#${item.toLowerCase()}`}
@@ -45,7 +43,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Right - Social */}
           <div>
             <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3 uppercase tracking-wider">
               Connect
@@ -67,11 +64,10 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom - Copyright */}
         <div className="pt-8 border-t border-gray-200 dark:border-gray-800">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-600 dark:text-gray-400 text-center sm:text-left">
-              © {currentYear} Yimisda. All rights reserved.
+              (c) {currentYear} Yimisda. All rights reserved.
             </p>
             <p className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-1">
               Built with
@@ -82,5 +78,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }

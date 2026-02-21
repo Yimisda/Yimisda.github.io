@@ -4,8 +4,8 @@ import { defineConfig } from "vite"
 
 // https://vite.dev/config/
 export default defineConfig({
-  // For username.github.io repos, use root path
-  base: '/',
+  // Use relative base for GitHub Pages stability across user/project sites
+  base: "./",
   plugins: [react()],
   resolve: {
     alias: {
@@ -14,30 +14,30 @@ export default defineConfig({
   },
   build: {
     // Output to docs folder for GitHub Pages (alternative to gh-pages branch)
-    // outDir: 'docs',
-    
+    // outDir: "docs",
+
     // Optimize chunk size
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
         manualChunks: {
           // Split vendor code into separate chunks
-          'vendor-react': ['react', 'react-dom'],
-          'vendor-motion': ['framer-motion'],
-          'vendor-katex': ['katex', 'react-katex'],
-          'vendor-ui': [
-            '@radix-ui/react-tabs',
-            '@radix-ui/react-dialog',
-            '@radix-ui/react-dropdown-menu',
-            '@radix-ui/react-tooltip',
-            '@radix-ui/react-slot',
+          "vendor-react": ["react", "react-dom"],
+          "vendor-motion": ["framer-motion"],
+          "vendor-katex": ["katex", "react-katex"],
+          "vendor-ui": [
+            "@radix-ui/react-tabs",
+            "@radix-ui/react-dialog",
+            "@radix-ui/react-dropdown-menu",
+            "@radix-ui/react-tooltip",
+            "@radix-ui/react-slot",
           ],
         },
       },
     },
-    
+
     // Minification options
-    minify: 'terser',
+    minify: "terser",
     terserOptions: {
       compress: {
         drop_console: true,
@@ -46,7 +46,7 @@ export default defineConfig({
       mangle: true,
     },
   },
-  
+
   // Development server options
   server: {
     port: 5173,

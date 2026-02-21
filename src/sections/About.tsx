@@ -119,7 +119,7 @@ export function About() {
                   className="w-full"
                   asChild
                 >
-                  <a href="/cv.pdf" download>
+                  <a href="cv.pdf" download>
                     <FileText className="w-4 h-4 mr-2" />
                     Download CV
                   </a>

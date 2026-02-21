@@ -2,18 +2,18 @@
 
 [![Deploy to GitHub Pages](https://github.com/Yimisda/yimisda.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/Yimisda/yimisda.github.io/actions/workflows/deploy.yml)
 
-A modern, elegant personal portfolio website built with React and TypeScript.
+A modern personal portfolio website built with React, TypeScript, and Tailwind CSS.
 
-## ✨ Features
+## Features
 
 - Clean, professional design
 - Dark mode support
-- Responsive layout for all devices
+- Responsive layout
 - Smooth animations
-- LaTeX math rendering support
-- SEO optimized
+- LaTeX math rendering
+- SEO-friendly metadata
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -34,7 +34,7 @@ npm install
 npm run dev
 ```
 
-Visit `http://localhost:5173` to see your site.
+Visit `http://localhost:5173` to see the site.
 
 ### Build for Production
 
@@ -42,32 +42,27 @@ Visit `http://localhost:5173` to see your site.
 npm run build
 ```
 
-## 🎨 Customization
+## Customization
 
 Edit the following files to update your information:
 
-- `src/sections/Hero.tsx` - Landing section with name and introduction
-- `src/sections/About.tsx` - About section with biography and background
-- `src/sections/Articles.tsx` - Publications and articles
-- `src/sections/Footer.tsx` - Social links and contact information
+- `src/sections/Hero.tsx` - Landing section
+- `src/sections/About.tsx` - Bio and background
+- `src/sections/Articles.tsx` - Publications and notes
+- `src/sections/Footer.tsx` - Social links and contact info
 
-## 🚀 Deployment
+## Deployment
 
 This project is configured for automatic deployment via GitHub Actions.
 
-1. Push to `main` branch
-2. GitHub Actions will automatically build and deploy
-3. Site will be live at `https://yimisda.github.io`
+1. Push to `main`
+2. GitHub Actions builds and deploys
+3. Site is published at `https://yimisda.github.io`
 
-## 📄 License
+## License
 
-MIT License - see [LICENSE](LICENSE) file for details.
+MIT License - see `LICENSE` for details.
 
-## 📧 Contact
+## Contact
 
-For questions or suggestions:
 - GitHub: [@Yimisda](https://github.com/Yimisda)
-
----
-
-Built with React, TypeScript, and Tailwind CSS.
