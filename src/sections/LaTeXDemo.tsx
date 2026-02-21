@@ -1,4 +1,4 @@
-import { useState } from "react"
+﻿import { useState } from "react"
 import { motion } from "framer-motion"
 import { Calculator, RefreshCw, Copy, Check } from "lucide-react"
 import "katex/dist/katex.min.css"
@@ -80,7 +80,7 @@ function FormulaCard({
   return (
     <motion.div
       whileHover={{ y: -2 }}
-      className="group relative p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/50 hover:border-indigo-300 dark:hover:border-indigo-700 transition-all duration-300"
+      className="group relative p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/50 hover:border-primary/40 transition-all duration-300"
     >
       <div className="flex items-center justify-between mb-3">
         <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -135,7 +135,7 @@ export function LaTeXDemo() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 text-sm font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
             <Calculator className="w-4 h-4" />
             LaTeX Showcase
           </div>
@@ -157,7 +157,7 @@ export function LaTeXDemo() {
             <CardHeader className="border-b border-gray-100 dark:border-gray-700/50">
               <div className="flex items-center justify-between">
                 <CardTitle className="text-xl font-semibold flex items-center gap-2">
-                  <Calculator className="w-5 h-5 text-indigo-500" />
+                  <Calculator className="w-5 h-5 text-primary" />
                   Formula Gallery
                 </CardTitle>
                 <Button variant="outline" size="sm" onClick={handleRerender} className="gap-2">
@@ -238,3 +238,4 @@ export function LaTeXDemo() {
     </section>
   )
 }
+

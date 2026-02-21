@@ -1,170 +1,197 @@
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import {
-  Github,
-  Link2,
-  Star,
-  GitFork,
-  ExternalLink,
-  Loader2,
-  Code2,
+  BookOpen,
   FileText,
-  Zap,
+  GitBranch,
+  Database,
+  Folder,
+  Sparkles,
+  Cpu,
+  Brain,
 } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
-interface ProjectCard {
+interface ModuleCard {
   id: string
-  name: string
+  title: string
   description: string
-  url: string
-  stars: number
-  forks: number
-  language: string
-  languageColor: string
-  topics: string[]
+  href: string
+  count: number
+  icon: React.ElementType
+  tag: string
 }
 
-const sampleProjects: ProjectCard[] = [
+interface ThreadCard {
+  id: string
+  title: string
+  description: string
+  icon: React.ElementType
+  tag: string
+}
+
+const threads: ThreadCard[] = [
   {
-    id: "1",
-    name: "signals-lab",
-    description: "信号与系统课程实验记录与作业复盘。",
-    url: "https://github.com/Yimisda/signals-lab",
-    stars: 0,
-    forks: 0,
-    language: "Python",
-    languageColor: "#3572A5",
-    topics: ["signals", "lab", "homework"],
+    id: "crossbar",
+    title: "忆阻器交叉阵列仿真",
+    description: "从器件模型到阵列非理想性，建立可验证的仿真基线。",
+    icon: Cpu,
+    tag: "SPICE / 交叉阵列",
   },
   {
-    id: "2",
-    name: "data-structures",
-    description: "数据结构课程项目与题解整理。",
-    url: "https://github.com/Yimisda/data-structures",
-    stars: 0,
-    forks: 0,
-    language: "C++",
-    languageColor: "#f34b7d",
-    topics: ["data-structures", "course", "practice"],
+    id: "stdp",
+    title: "类脑学习规则与 STDP",
+    description: "把学习规则落地到器件动力学与电路实现的可塑性路径。",
+    icon: Brain,
+    tag: "学习规则 / 动力学",
   },
   {
-    id: "3",
-    name: "circuits-notes",
-    description: "电路分析笔记与小工具脚本。",
-    url: "https://github.com/Yimisda/circuits-notes",
-    stars: 0,
-    forks: 0,
-    language: "TypeScript",
-    languageColor: "#3178c6",
-    topics: ["circuits", "notes", "tools"],
+    id: "architecture",
+    title: "新型计算架构生态位",
+    description: "比较忆阻器、光子与数字加速器的系统级定位与协作边界。",
+    icon: GitBranch,
+    tag: "架构 / 生态位",
   },
 ]
 
-const languageColors: Record<string, string> = {
-  TypeScript: "#3178c6",
-  JavaScript: "#f1e05a",
-  Python: "#3572A5",
-  "Jupyter Notebook": "#DA5B0B",
-  HTML: "#e34c26",
-  CSS: "#563d7c",
-  Java: "#b07219",
-  Go: "#00ADD8",
-  Rust: "#dea584",
-  C: "#555555",
-  "C++": "#f34b7d",
-}
+const modules: ModuleCard[] = [
+  {
+    id: "learning",
+    title: "课程学习",
+    description: "信号与系统、电路、数据结构等课程笔记与作业复盘。",
+    href: "#learning",
+    count: 61,
+    icon: BookOpen,
+    tag: "课程/作业/电工",
+  },
+  {
+    id: "workflow",
+    title: "工作流",
+    description: "学习、生活与写作流程的模板与 SOP。",
+    href: "#learning",
+    count: 66,
+    icon: Folder,
+    tag: "流程/模板",
+  },
+  {
+    id: "resources",
+    title: "资源库",
+    description: "工具、资料、链接的统一索引。",
+    href: "#learning",
+    count: 31,
+    icon: Database,
+    tag: "资料/工具",
+  },
+  {
+    id: "research",
+    title: "研究与论文",
+    description: "论文阅读、问题清单与阶段性思考。",
+    href: "#learning",
+    count: 4,
+    icon: FileText,
+    tag: "论文/思考",
+  },
+  {
+    id: "practice",
+    title: "项目与实践",
+    description: "实验记录、小工具与实践清单。",
+    href: "#learning",
+    count: 1,
+    icon: GitBranch,
+    tag: "实验/工具",
+  },
+  {
+    id: "growth",
+    title: "成长记录",
+    description: "思考、个人发展与工作日报。",
+    href: "#learning",
+    count: 27,
+    icon: Sparkles,
+    tag: "成长/反思",
+  },
+]
 
-function ProjectCardComponent({
-  project,
-  index,
-}: {
-  project: ProjectCard
-  index: number
-}) {
+function ThreadCardComponent({ thread, index }: { thread: ThreadCard; index: number }) {
+  const Icon = thread.icon
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5, delay: index * 0.1, ease: [0.4, 0, 0.2, 1] }}
       whileHover={{ y: -4 }}
     >
-      <Card className="group h-full border-0 shadow-soft hover:shadow-soft-lg transition-all duration-300 overflow-hidden bg-white dark:bg-gray-800/50">
+      <Card className="group h-full border border-black/5 dark:border-white/10 shadow-soft hover:shadow-soft-lg transition-all duration-300 overflow-hidden bg-white/90 dark:bg-gray-800/60">
+        <CardContent className="p-6">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center shadow-glow">
+                <Icon className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-900 dark:text-white">
+                  {thread.title}
+                </h3>
+                <p className="text-xs text-gray-500 dark:text-gray-400">{thread.tag}</p>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            {thread.description}
+          </p>
+        </CardContent>
+      </Card>
+    </motion.div>
+  )
+}
+
+function ModuleCardComponent({ module, index }: { module: ModuleCard; index: number }) {
+  const Icon = module.icon
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: [0.4, 0, 0.2, 1] }}
+      whileHover={{ y: -4 }}
+    >
+      <Card className="group h-full border border-black/5 dark:border-white/10 shadow-soft hover:shadow-soft-lg transition-all duration-300 overflow-hidden bg-white/90 dark:bg-gray-800/60">
         <CardContent className="p-6">
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
-                <Github className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                <Icon className="w-5 h-5 text-gray-600 dark:text-gray-300" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-indigo-500 transition-colors">
-                  {project.name}
+                <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                  {module.title}
                 </h3>
                 <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-gray-500 dark:text-gray-400 hover:text-indigo-500 flex items-center gap-1"
+                  href={module.href}
+                  className="text-xs text-gray-500 dark:text-gray-400 hover:text-primary"
                 >
-                  <Link2 className="w-3 h-3" />
-                  View on GitHub
+                  查看该模块
                 </a>
               </div>
             </div>
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="opacity-0 group-hover:opacity-100 transition-opacity"
+            <Badge
+              variant="secondary"
+              className="text-xs bg-primary/10 text-primary"
             >
-              <ExternalLink className="w-4 h-4 text-gray-400 hover:text-indigo-500" />
-            </a>
+              {module.count} 篇
+            </Badge>
           </div>
 
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
-            {project.description}
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            {module.description}
           </p>
 
-          <div className="flex flex-wrap gap-1.5 mb-4">
-            {project.topics.map((topic) => (
-              <Badge
-                key={topic}
-                variant="secondary"
-                className="text-xs bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/30"
-              >
-                {topic}
-              </Badge>
-            ))}
-          </div>
-
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-1.5">
-                <span
-                  className="w-3 h-3 rounded-full"
-                  style={{ backgroundColor: project.languageColor }}
-                />
-                <span className="text-gray-600 dark:text-gray-400">
-                  {project.language}
-                </span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <span className="flex items-center gap-1 text-gray-600 dark:text-gray-400">
-                  <Star className="w-4 h-4" />
-                  {project.stars}
-                </span>
-                <span className="flex items-center gap-1 text-gray-600 dark:text-gray-400">
-                  <GitFork className="w-4 h-4" />
-                  {project.forks}
-                </span>
-              </div>
-            </div>
+          <div className="flex flex-wrap gap-2">
+            <span className="px-2.5 py-1 text-xs font-medium text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700/60 rounded-full">
+              {module.tag}
+            </span>
           </div>
         </CardContent>
       </Card>
@@ -173,41 +200,10 @@ function ProjectCardComponent({
 }
 
 export function GitHubProjects() {
-  const [repoUrl, setRepoUrl] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
-  const [projects, setProjects] = useState<ProjectCard[]>(sampleProjects)
   const { ref, isVisible } = useScrollAnimation<HTMLDivElement>({
     threshold: 0.2,
     triggerOnce: true,
   })
-
-  const handleGenerateCard = async () => {
-    if (!repoUrl.trim()) return
-
-    setIsLoading(true)
-
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-
-    const match = repoUrl.match(/github\.com\/([^/]+)\/([^/]+)/)
-    if (match) {
-      const [, owner, repo] = match
-      const newProject: ProjectCard = {
-        id: Date.now().toString(),
-        name: repo.replace(".git", ""),
-        description: `自动生成的课程项目卡片：${owner}/${repo}.`,
-        url: repoUrl,
-        stars: Math.floor(Math.random() * 500),
-        forks: Math.floor(Math.random() * 100),
-        language: "TypeScript",
-        languageColor: languageColors.TypeScript,
-        topics: ["github", "integration", "auto-generated"],
-      }
-      setProjects((prev) => [newProject, ...prev])
-    }
-
-    setIsLoading(false)
-    setRepoUrl("")
-  }
 
   return (
     <section id="projects" className="section-padding">
@@ -218,15 +214,15 @@ export function GitHubProjects() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 text-sm font-medium mb-4">
-            <Github className="w-4 h-4" />
-            课程项目
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+            <Sparkles className="w-4 h-4" />
+            研究焦点
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            课程项目与作业仓库
+            研究焦点与模块结构
           </h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            以课程为主线，记录项目实践、实验报告与学习工具。
+            将器件物理、学习规则与系统架构的关键问题同步推进，并沉淀为可复用模块。
           </p>
         </motion.div>
 
@@ -234,95 +230,37 @@ export function GitHubProjects() {
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-2xl mx-auto mb-12"
+          className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12"
         >
-          <Card className="border-0 shadow-soft-lg">
-            <CardContent className="p-6">
-              <div className="flex flex-col sm:flex-row gap-4">
-                <div className="flex-1 relative">
-                  <Github className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <Input
-                    type="url"
-                    placeholder="https://github.com/username/course-project"
-                    value={repoUrl}
-                    onChange={(e) => setRepoUrl(e.target.value)}
-                    onKeyDown={(e) => e.key === "Enter" && handleGenerateCard()}
-                    className="pl-10 h-12"
-                  />
-                </div>
-                <Button
-                  onClick={handleGenerateCard}
-                  disabled={isLoading || !repoUrl.trim()}
-                  className="gradient-bg text-white h-12 px-6 shadow-glow hover:shadow-glow-lg transition-all duration-300 disabled:opacity-50"
-                >
-                  {isLoading ? (
-                    <>
-                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                      生成中...
-                    </>
-                  ) : (
-                    <>
-                      <Zap className="w-4 h-4 mr-2" />
-                      生成卡片
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              <div className="mt-6 grid grid-cols-3 gap-4 text-center">
-                <div className="flex flex-col items-center gap-2">
-                  <div className="w-10 h-10 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center">
-                    <FileText className="w-5 h-5 text-indigo-500" />
-                  </div>
-                  <span className="text-xs text-gray-600 dark:text-gray-400">
-                    README 摘要
-                  </span>
-                </div>
-                <div className="flex flex-col items-center gap-2">
-                  <div className="w-10 h-10 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center">
-                    <Code2 className="w-5 h-5 text-indigo-500" />
-                  </div>
-                  <span className="text-xs text-gray-600 dark:text-gray-400">
-                    语言统计
-                  </span>
-                </div>
-                <div className="flex flex-col items-center gap-2">
-                  <div className="w-10 h-10 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center">
-                    <Zap className="w-5 h-5 text-indigo-500" />
-                  </div>
-                  <span className="text-xs text-gray-600 dark:text-gray-400">
-                    课程仓库预览
-                  </span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          {threads.map((thread, index) => (
+            <ThreadCardComponent key={thread.id} thread={thread} index={index} />
+          ))}
         </motion.div>
 
-        <AnimatePresence mode="wait">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-3">
+            <div>
+              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
+                The World I See 模块
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                以主题为索引，把课程、研究、项目与成长记录组织成系统。
+              </p>
+            </div>
+            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-accent/15 text-accent">
+              持续扩展中
+            </span>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project, index) => (
-              <ProjectCardComponent key={project.id} project={project} index={index} />
+            {modules.map((module, index) => (
+              <ModuleCardComponent key={module.id} module={module} index={index} />
             ))}
           </div>
-        </AnimatePresence>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center mt-10"
-        >
-          <a
-            href="https://github.com/Yimisda"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-indigo-500 hover:text-indigo-600 font-medium transition-colors"
-          >
-            <Github className="w-5 h-5" />
-            查看 GitHub
-            <ExternalLink className="w-4 h-4" />
-          </a>
         </motion.div>
       </div>
     </section>

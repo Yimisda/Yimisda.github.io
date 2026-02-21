@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,8 +6,9 @@ import { useTheme } from '@/contexts/ThemeContext';
 
 const navItems = [
   { label: "首页", href: "#hero" },
-  { label: "学习生活", href: "#learning" },
-  { label: "课程项目", href: "#projects" },
+  { label: "知识地图", href: "#learning" },
+  { label: "研究焦点", href: "#projects" },
+  { label: "阅读进度", href: "#reading" },
   { label: "关于我", href: "#about" },
 ];
 
@@ -48,7 +49,7 @@ export function Navigation() {
         transition={{ duration: 0.3 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm'
+            ? 'bg-white/85 dark:bg-gray-900/90 backdrop-blur-md shadow-sm border-b border-black/5 dark:border-white/5'
             : 'bg-transparent'
         }`}
       >
@@ -57,7 +58,7 @@ export function Navigation() {
             {/* Logo */}
             <motion.button
               onClick={() => scrollToSection('#hero')}
-              className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+              className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white hover:text-primary transition-colors"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -71,7 +72,7 @@ export function Navigation() {
                   key={item.href}
                   variant="ghost"
                   onClick={() => scrollToSection(item.href)}
-                  className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-transparent font-medium"
+                  className="text-gray-700 dark:text-gray-300 hover:text-primary hover:bg-transparent font-medium"
                 >
                   {item.label}
                 </Button>
@@ -82,7 +83,7 @@ export function Navigation() {
                 variant="ghost"
                 size="icon"
                 onClick={toggleTheme}
-                className="ml-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
+                className="ml-2 text-gray-700 dark:text-gray-300 hover:text-primary"
               >
                 {theme === 'dark' ? (
                   <Sun className="w-5 h-5" />
@@ -141,10 +142,10 @@ export function Navigation() {
                     key={item.href}
                     variant="ghost"
                     onClick={() => scrollToSection(item.href)}
-                    className="justify-start text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-gray-50 dark:hover:bg-gray-800 font-medium"
-                  >
-                    {item.label}
-                  </Button>
+                  className="justify-start text-gray-700 dark:text-gray-300 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 font-medium"
+                >
+                  {item.label}
+                </Button>
                 ))}
               </div>
             </div>
@@ -154,3 +155,5 @@ export function Navigation() {
     </>
   );
 }
+
+

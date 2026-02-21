@@ -1,4 +1,4 @@
-/* KaTeX Styles */
+﻿/* KaTeX Styles */
 @import 'katex/dist/katex.min.css';
 
 @tailwind base;
@@ -7,68 +7,68 @@
 
 @layer base {
   :root {
-    /* Base colors - More refined palette */
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    /* Base colors - Warm paper + ink */
+    --background: 36 33% 98%;
+    --foreground: 222 30% 12%;
+    --card: 36 33% 98%;
+    --card-foreground: 222 30% 12%;
+    --popover: 36 33% 98%;
+    --popover-foreground: 222 30% 12%;
 
-    /* Primary - Refined indigo */
-    --primary: 239 84% 67%;
-    --primary-foreground: 0 0% 100%;
+    /* Primary - Jade */
+    --primary: 173 72% 32%;
+    --primary-foreground: 0 0% 98%;
 
-    /* Secondary - Subtle gray */
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 222 47% 11%;
+    /* Secondary - Warm neutral */
+    --secondary: 30 24% 94%;
+    --secondary-foreground: 222 30% 12%;
 
-    /* Muted - Softer tones */
-    --muted: 220 14% 96%;
-    --muted-foreground: 215 16% 47%;
+    /* Muted - Soft neutral */
+    --muted: 30 16% 92%;
+    --muted-foreground: 215 16% 40%;
 
-    /* Accent - Elegant purple */
-    --accent: 250 95% 76%;
-    --accent-foreground: 222 47% 11%;
+    /* Accent - Copper */
+    --accent: 25 90% 55%;
+    --accent-foreground: 26 30% 15%;
 
     /* Destructive */
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
     /* Borders */
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 239 84% 67%;
+    --border: 30 20% 90%;
+    --input: 30 20% 90%;
+    --ring: 173 72% 32%;
     --radius: 0.5rem;
   }
 
   .dark {
     /* Dark mode - Deeper, more sophisticated */
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
+    --background: 222 32% 9%;
+    --foreground: 30 20% 98%;
+    --card: 222 32% 9%;
+    --card-foreground: 30 20% 98%;
+    --popover: 222 32% 9%;
+    --popover-foreground: 30 20% 98%;
 
-    --primary: 239 84% 67%;
-    --primary-foreground: 222 47% 11%;
+    --primary: 173 60% 45%;
+    --primary-foreground: 222 32% 10%;
 
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 20% 15%;
+    --secondary-foreground: 30 20% 98%;
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 215 18% 65%;
 
-    --accent: 250 95% 76%;
-    --accent-foreground: 222 47% 11%;
+    --accent: 28 80% 60%;
+    --accent-foreground: 222 32% 10%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 239 84% 67%;
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 173 60% 45%;
   }
 }
 
@@ -85,7 +85,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter var', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'IBM Plex Sans', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
     font-variation-settings: normal;
   }
@@ -93,6 +93,7 @@
   /* Typography improvements */
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold tracking-tight;
+    font-family: 'Source Serif 4', 'Noto Serif SC', 'Songti SC', serif;
     text-rendering: optimizeLegibility;
   }
 
@@ -128,13 +129,13 @@
   /* Gradient text - More subtle */
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    background-image: linear-gradient(135deg, #0f766e 0%, #d97706 100%);
   }
 
   /* Glass effect - More refined */
   .glass {
     @apply bg-white/90 dark:bg-gray-900/90 backdrop-blur-md;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(15, 23, 42, 0.08);
   }
 
   /* Card styles */
@@ -148,7 +149,7 @@
 
   /* Link styles */
   .link-subtle {
-    @apply text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200;
+    @apply text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-200;
   }
 
   .link-underline {
@@ -175,7 +176,25 @@
 
   /* Focus styles */
   .focus-ring {
-    @apply focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-900;
+  }
+
+  .gradient-bg {
+    background-image: linear-gradient(135deg, rgba(15, 118, 110, 0.95) 0%, rgba(217, 119, 6, 0.9) 100%);
+  }
+
+  .hero-surface {
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(15, 118, 110, 0.08), transparent 55%),
+      radial-gradient(circle at 80% 20%, rgba(217, 119, 6, 0.08), transparent 55%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 245, 239, 0.9) 100%);
+  }
+
+  .texture-grid {
+    background-image:
+      linear-gradient(to right, rgba(15, 23, 42, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15, 23, 42, 0.06) 1px, transparent 1px);
+    background-size: 80px 80px;
   }
 }
 
@@ -248,7 +267,7 @@ pre code {
 
 /* Selection color */
 ::selection {
-  @apply bg-indigo-100 dark:bg-indigo-900/50 text-indigo-900 dark:text-indigo-100;
+  @apply bg-primary/20 text-foreground;
 }
 
 /* Print styles */
@@ -257,3 +276,5 @@ pre code {
     display: none !important;
   }
 }
+
+

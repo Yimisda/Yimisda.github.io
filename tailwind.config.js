@@ -66,13 +66,14 @@ module.exports = {
       },
       boxShadow: {
         xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-        'glow': '0 0 20px rgba(99, 102, 241, 0.3)',
-        'glow-lg': '0 0 40px rgba(99, 102, 241, 0.5)',
+        'glow': '0 0 20px rgba(13, 148, 136, 0.35)',
+        'glow-lg': '0 0 40px rgba(217, 119, 6, 0.35)',
         'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.1)',
         'soft-lg': '0 10px 40px -10px rgba(0, 0, 0, 0.15)',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        sans: ['IBM Plex Sans', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'sans-serif'],
+        serif: ['Source Serif 4', 'Noto Serif SC', 'Songti SC', 'serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       fontSize: {
@@ -121,8 +122,8 @@ module.exports = {
           "50%": { transform: "translateY(-20px)" },
         },
         "pulse-glow": {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(99, 102, 241, 0.3)" },
-          "50%": { boxShadow: "0 0 40px rgba(99, 102, 241, 0.6)" },
+          "0%, 100%": { boxShadow: "0 0 20px rgba(13, 148, 136, 0.25)" },
+          "50%": { boxShadow: "0 0 40px rgba(217, 119, 6, 0.35)" },
         },
         "count-up": {
           from: { "--num": "0" },

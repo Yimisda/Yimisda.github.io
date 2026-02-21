@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+﻿import { motion } from "framer-motion"
 import { GraduationCap, Mail, MapPin, Github, FileText, BookOpen, Award } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 import { Card, CardContent } from "@/components/ui/card"
@@ -9,30 +9,30 @@ const education = [
     degree: "B.Eng. in Electronic Engineering",
     institution: "Peking University",
     period: "2024 - Present",
-    focus: "电路、信号与系统、计算机基础",
+    focus: "夯实电子工程与计算机系统基础，并将课程与研究问题建立映射。",
   },
 ]
 
 const currentFocus = [
   {
-    area: "课程基础",
-    description: "系统复习电路、信号与系统、数据结构等课程内容",
+    area: "忆阻器与类脑计算架构",
+    description: "建立器件物理、存算一体与学习规则之间的结构同构。",
   },
   {
-    area: "学习工具",
-    description: "用 Linux、Git 和小脚本提升效率",
+    area: "交叉阵列仿真与非理想性",
+    description: "用仿真验证器件模型、阵列噪声与可训练性边界。",
   },
   {
-    area: "兴趣与生活",
-    description: "阅读、音乐与社团活动，保持节奏感",
+    area: "知识地图与研究方法",
+    description: "将课程、项目与反思组织成可检索、可复盘的研究系统。",
   },
 ]
 
 const skills = {
-  "课程方向": ["电路", "信号与系统", "数据结构"],
-  "编程": ["Python", "C/C++", "MATLAB"],
-  "工具": ["Git", "Linux", "LaTeX"],
-  "习惯": ["学习规划", "笔记整理", "每周复盘"],
+  学科方向: ["信号与系统", "电路分析", "数据结构", "计算机系统基础"],
+  编程语言: ["Python", "C/C++", "MATLAB", "TypeScript"],
+  工具链: ["Git", "Linux", "LaTeX", "Obsidian"],
+  知识管理: ["Markdown", "知识卡片", "主题索引", "复盘方法"],
 }
 
 export function About() {
@@ -42,7 +42,7 @@ export function About() {
   })
 
   return (
-    <section id="about" className="section-padding bg-gray-50 dark:bg-gray-900/50">
+    <section id="about" className="section-padding bg-gray-50/70 dark:bg-gray-900/50">
       <div ref={ref} className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -51,9 +51,9 @@ export function About() {
           className="mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            关于我
+            关于我与这个项目
           </h2>
-          <div className="w-20 h-1 bg-indigo-600 dark:bg-indigo-400" />
+          <div className="w-20 h-1 bg-primary" />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -66,7 +66,7 @@ export function About() {
             <Card className="card-elevated">
               <CardContent className="p-6">
                 <div className="mb-6">
-                  <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg">
+                  <div className="w-32 h-32 mx-auto rounded-full gradient-bg flex items-center justify-center shadow-lg">
                     <span className="text-5xl font-bold text-white">Y</span>
                   </div>
                 </div>
@@ -75,7 +75,7 @@ export function About() {
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                     Yimisda
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-1">本科生</p>
+                  <p className="text-gray-600 dark:text-gray-400 mb-1">知识库与学习系统</p>
                   <p className="text-sm text-gray-500 dark:text-gray-500">PKU EECS</p>
                 </div>
 
@@ -86,17 +86,17 @@ export function About() {
 
                 <div className="space-y-3 mb-6">
                   <a
-                    href="mailto:your.email@pku.edu.cn"
-                    className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                    href="mailto:517935800@qq.com"
+                    className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300 hover:text-primary transition-colors"
                   >
                     <Mail className="w-4 h-4" />
-                    <span>your.email@pku.edu.cn</span>
+                    <span>517935800@qq.com</span>
                   </a>
                   <a
                     href="https://github.com/Yimisda"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                    className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300 hover:text-primary transition-colors"
                   >
                     <Github className="w-4 h-4" />
                     <span>github.com/Yimisda</span>
@@ -122,14 +122,14 @@ export function About() {
               <Card className="card-elevated">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-2 mb-4">
-                    <BookOpen className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                    <BookOpen className="w-5 h-5 text-primary" />
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                    个人简介
+                      这个仓库在做什么
                     </h3>
                   </div>
                   <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    我是北京大学电子工程专业本科生，目前以打牢课程基础为主，
-                    同时记录学习过程和生活节奏，让成长更可见、更稳定。
+                    The World I See 是一套长期维护的学习与生活知识库：围绕课程学习建立主干，
+                    以研究笔记、项目实践、阅读记录和工作流为分支，形成可检索、可复盘的个人知识地图。
                   </p>
                 </CardContent>
               </Card>
@@ -143,13 +143,13 @@ export function About() {
               <Card className="card-elevated">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-2 mb-4">
-                    <GraduationCap className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                    <GraduationCap className="w-5 h-5 text-primary" />
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                    教育经历
+                      教育背景
                     </h3>
                   </div>
                   {education.map((edu, index) => (
-                    <div key={index} className="border-l-2 border-indigo-200 dark:border-indigo-800 pl-4">
+                    <div key={index} className="border-l-2 border-primary/30 dark:border-primary/50 pl-4">
                       <h4 className="font-semibold text-gray-900 dark:text-white">
                         {edu.degree}
                       </h4>
@@ -157,9 +157,7 @@ export function About() {
                       <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                         {edu.period}
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                      方向：{edu.focus}
-                      </p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">{edu.focus}</p>
                     </div>
                   ))}
                 </CardContent>
@@ -174,10 +172,8 @@ export function About() {
               <Card className="card-elevated">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-2 mb-4">
-                    <Award className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                    目前关注
-                    </h3>
+                    <Award className="w-5 h-5 text-primary" />
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">近期主题</h3>
                   </div>
                   <div className="space-y-4">
                     {currentFocus.map((item, index) => (
@@ -203,7 +199,7 @@ export function About() {
               <Card className="card-elevated">
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                    技能与工具
+                    能力与工具
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {Object.entries(skills).map(([category, items]) => (
@@ -233,3 +229,4 @@ export function About() {
     </section>
   )
 }
+

@@ -1,27 +1,33 @@
-import { Github, Mail, Linkedin, Twitter, Heart } from "lucide-react"
+import { Github, Mail, Heart } from "lucide-react"
 
 const socialLinks = [
   { icon: Github, label: "GitHub", url: "https://github.com/Yimisda" },
-  { icon: Mail, label: "Email", url: "mailto:your.email@pku.edu.cn" },
-  { icon: Linkedin, label: "LinkedIn", url: "https://linkedin.com/in/yourname" },
-  { icon: Twitter, label: "Twitter", url: "https://twitter.com/yourname" },
+  { icon: Mail, label: "Email", url: "mailto:517935800@qq.com" },
+]
+
+const quickLinks = [
+  { label: "首页", href: "#hero" },
+  { label: "知识地图", href: "#learning" },
+  { label: "研究焦点", href: "#projects" },
+  { label: "阅读进度", href: "#reading" },
+  { label: "关于我", href: "#about" },
 ]
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+    <footer className="bg-white dark:bg-gray-900 border-t border-black/5 dark:border-white/5">
       <div className="container-custom py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-              Yimisda
+              The World I See
             </h3>
             <p className="text-sm text-gray-600 dark:text-gray-400">
               PKU EECS 本科生
               <br />
-              学习与生活记录
+              忆阻器与类脑计算 · 知识系统
             </p>
           </div>
 
@@ -30,19 +36,13 @@ export function Footer() {
               Quick Links
             </h4>
             <ul className="space-y-2">
-              {["Home", "Learning", "Projects", "About"].map((item) => (
-                <li key={item}>
+              {quickLinks.map((item) => (
+                <li key={item.href}>
                   <a
-                    href={`#${item.toLowerCase()}`}
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                    href={item.href}
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
                   >
-                    {item === "Home"
-                      ? "首页"
-                      : item === "Learning"
-                      ? "学习生活"
-                      : item === "Projects"
-                      ? "课程项目"
-                      : "关于我"}
+                    {item.label}
                   </a>
                 </li>
               ))}
@@ -60,7 +60,7 @@ export function Footer() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/30 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-200"
+                  className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-primary/15 hover:text-primary transition-all duration-200"
                   aria-label={link.label}
                 >
                   <link.icon className="w-5 h-5" />
@@ -70,15 +70,15 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-gray-200 dark:border-gray-800">
+        <div className="pt-8 border-t border-black/5 dark:border-white/5">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-600 dark:text-gray-400 text-center sm:text-left">
               (c) {currentYear} Yimisda. All rights reserved.
             </p>
             <p className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-1">
               Built with
-              <Heart className="w-4 h-4 text-red-500 fill-current" />
-              using React & TypeScript
+              <Heart className="w-4 h-4 text-rose-500 fill-current" />
+              React & TypeScript
             </p>
           </div>
         </div>

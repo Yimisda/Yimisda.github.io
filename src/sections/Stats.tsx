@@ -1,15 +1,14 @@
-import { motion } from "framer-motion"
+﻿import { motion } from "framer-motion"
 import { FileText, GitBranch, BookOpen, Star } from "lucide-react"
 import { useCountUp } from "@/hooks/useCountUp"
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 
 const stats = [
-  { icon: FileText, value: 0, label: "课程已修", suffix: "" },
-  { icon: GitBranch, value: 0, label: "课程项目", suffix: "" },
-  { icon: BookOpen, value: 0, label: "读书笔记", suffix: "" },
-  { icon: Star, value: 0, label: "社团活动", suffix: "" },
+  { icon: FileText, value: 61, label: "课程笔记", suffix: "篇" },
+  { icon: GitBranch, value: 66, label: "工作流文档", suffix: "篇" },
+  { icon: BookOpen, value: 31, label: "资源条目", suffix: "篇" },
+  { icon: Star, value: 27, label: "成长记录", suffix: "篇" },
 ]
-
 function StatCard({
   icon: Icon,
   value,
@@ -48,7 +47,7 @@ function StatCard({
       className="group relative"
     >
       <div className="relative p-8 rounded-2xl bg-white dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/50 shadow-soft hover:shadow-soft-lg transition-all duration-300 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
         <div className="relative z-10 text-center">
           <motion.div
@@ -67,7 +66,7 @@ function StatCard({
           <p className="text-gray-600 dark:text-gray-400 font-medium">{label}</p>
         </div>
 
-        <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-indigo-100 dark:bg-indigo-900/20 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500" />
+        <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-primary/15 dark:bg-primary/20 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500" />
       </div>
     </motion.div>
   )
@@ -86,7 +85,7 @@ export function Stats() {
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full"
           style={{
             background:
-              "radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 60%)",
+              "radial-gradient(circle, rgba(13, 148, 136, 0.08) 0%, transparent 60%)",
           }}
         />
       </div>
@@ -99,10 +98,10 @@ export function Stats() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            学习小结
+            知识库概览
           </h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            记录课程进度、项目练习和日常成长。
+            从课程到研究，再到工作流与成长记录，形成可追溯的学习轨迹。
           </p>
         </motion.div>
 
@@ -120,3 +119,5 @@ export function Stats() {
     </section>
   )
 }
+
+
