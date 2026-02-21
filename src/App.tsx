@@ -3,7 +3,6 @@ import { ScrollProgress } from '@/components/custom/ScrollProgress';
 import { Navigation } from '@/sections/Navigation';
 import { Hero } from '@/sections/Hero';
 import { Stats } from '@/sections/Stats';
-import { LaTeXDemo } from '@/sections/LaTeXDemo';
 import { GitHubProjects } from '@/sections/GitHubProjects';
 import { Articles } from '@/sections/Articles';
 import { About } from '@/sections/About';
@@ -18,7 +17,6 @@ function App() {
         <main>
           <Hero />
           <Stats />
-          <LaTeXDemo />
           <GitHubProjects />
           <Articles />
           <About />

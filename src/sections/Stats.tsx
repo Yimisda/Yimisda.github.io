@@ -4,10 +4,10 @@ import { useCountUp } from "@/hooks/useCountUp"
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 
 const stats = [
-  { icon: FileText, value: 12, label: "Publications", suffix: "" },
-  { icon: GitBranch, value: 24, label: "Open-source repos", suffix: "" },
-  { icon: BookOpen, value: 6, label: "Research notes", suffix: "" },
-  { icon: Star, value: 1000, label: "GitHub Stars", suffix: "" },
+  { icon: FileText, value: 0, label: "课程已修", suffix: "" },
+  { icon: GitBranch, value: 0, label: "课程项目", suffix: "" },
+  { icon: BookOpen, value: 0, label: "读书笔记", suffix: "" },
+  { icon: Star, value: 0, label: "社团活动", suffix: "" },
 ]
 
 function StatCard({
@@ -99,11 +99,10 @@ export function Stats() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Research Snapshot
+            学习小结
           </h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            A quick view of recent output across publications, tooling, and open
-            collaboration.
+            记录课程进度、项目练习和日常成长。
           </p>
         </motion.div>
 

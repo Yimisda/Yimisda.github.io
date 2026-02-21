@@ -19,9 +19,9 @@ export function Footer() {
               Yimisda
             </h3>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              PKU EECS Student
+              PKU EECS 本科生
               <br />
-              Memristive Computing Researcher
+              学习与生活记录
             </p>
           </div>
 
@@ -30,13 +30,19 @@ export function Footer() {
               Quick Links
             </h4>
             <ul className="space-y-2">
-              {["Home", "Research", "Projects", "About"].map((item) => (
+              {["Home", "Learning", "Projects", "About"].map((item) => (
                 <li key={item}>
                   <a
                     href={`#${item.toLowerCase()}`}
                     className="text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                   >
-                    {item}
+                    {item === "Home"
+                      ? "首页"
+                      : item === "Learning"
+                      ? "学习生活"
+                      : item === "Projects"
+                      ? "课程项目"
+                      : "关于我"}
                   </a>
                 </li>
               ))}

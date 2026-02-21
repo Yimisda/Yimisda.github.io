@@ -5,10 +5,10 @@ import { Button } from '@/components/ui/button';
 import { useTheme } from '@/contexts/ThemeContext';
 
 const navItems = [
-  { label: 'Home', href: '#hero' },
-  { label: 'Research', href: '#articles' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'About', href: '#about' },
+  { label: "首页", href: "#hero" },
+  { label: "学习生活", href: "#learning" },
+  { label: "课程项目", href: "#projects" },
+  { label: "关于我", href: "#about" },
 ];
 
 export function Navigation() {

@@ -32,39 +32,36 @@ interface ProjectCard {
 const sampleProjects: ProjectCard[] = [
   {
     id: "1",
-    name: "latex-renderer",
-    description:
-      "A high-performance LaTeX math formula renderer for web applications with real-time preview and KaTeX integration.",
-    url: "https://github.com/Yimisda/latex-renderer",
-    stars: 128,
-    forks: 24,
-    language: "TypeScript",
-    languageColor: "#3178c6",
-    topics: ["latex", "katex", "math", "react"],
+    name: "signals-lab",
+    description: "信号与系统课程实验记录与作业复盘。",
+    url: "https://github.com/Yimisda/signals-lab",
+    stars: 0,
+    forks: 0,
+    language: "Python",
+    languageColor: "#3572A5",
+    topics: ["signals", "lab", "homework"],
   },
   {
     id: "2",
-    name: "pku-research-tools",
-    description:
-      "Collection of research utilities and automation tools for academic workflows at PKU.",
-    url: "https://github.com/Yimisda/pku-research-tools",
-    stars: 89,
-    forks: 15,
-    language: "Python",
-    languageColor: "#3572A5",
-    topics: ["research", "automation", "academic", "tools"],
+    name: "data-structures",
+    description: "数据结构课程项目与题解整理。",
+    url: "https://github.com/Yimisda/data-structures",
+    stars: 0,
+    forks: 0,
+    language: "C++",
+    languageColor: "#f34b7d",
+    topics: ["data-structures", "course", "practice"],
   },
   {
     id: "3",
-    name: "ml-experiments",
-    description:
-      "Machine learning experiments and implementations of recent papers in computer vision and NLP.",
-    url: "https://github.com/Yimisda/ml-experiments",
-    stars: 256,
-    forks: 42,
-    language: "Jupyter Notebook",
-    languageColor: "#DA5B0B",
-    topics: ["machine-learning", "deep-learning", "pytorch", "research"],
+    name: "circuits-notes",
+    description: "电路分析笔记与小工具脚本。",
+    url: "https://github.com/Yimisda/circuits-notes",
+    stars: 0,
+    forks: 0,
+    language: "TypeScript",
+    languageColor: "#3178c6",
+    topics: ["circuits", "notes", "tools"],
   },
 ]
 
@@ -197,7 +194,7 @@ export function GitHubProjects() {
       const newProject: ProjectCard = {
         id: Date.now().toString(),
         name: repo.replace(".git", ""),
-        description: `Automatically generated project card for ${owner}/${repo}.`,
+        description: `自动生成的课程项目卡片：${owner}/${repo}.`,
         url: repoUrl,
         stars: Math.floor(Math.random() * 500),
         forks: Math.floor(Math.random() * 100),
@@ -223,14 +220,13 @@ export function GitHubProjects() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 text-sm font-medium mb-4">
             <Github className="w-4 h-4" />
-            GitHub Projects
+            课程项目
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Selected Repositories
+            课程项目与作业仓库
           </h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Highlighted work across research tooling, experimentation, and
-            production-grade utilities.
+            以课程为主线，记录项目实践、实验报告与学习工具。
           </p>
         </motion.div>
 
@@ -247,7 +243,7 @@ export function GitHubProjects() {
                   <Github className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                   <Input
                     type="url"
-                    placeholder="https://github.com/username/repository"
+                    placeholder="https://github.com/username/course-project"
                     value={repoUrl}
                     onChange={(e) => setRepoUrl(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && handleGenerateCard()}
@@ -262,12 +258,12 @@ export function GitHubProjects() {
                   {isLoading ? (
                     <>
                       <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                      Generating...
+                      生成中...
                     </>
                   ) : (
                     <>
                       <Zap className="w-4 h-4 mr-2" />
-                      Generate Card
+                      生成卡片
                     </>
                   )}
                 </Button>
@@ -279,7 +275,7 @@ export function GitHubProjects() {
                     <FileText className="w-5 h-5 text-indigo-500" />
                   </div>
                   <span className="text-xs text-gray-600 dark:text-gray-400">
-                    README summary
+                    README 摘要
                   </span>
                 </div>
                 <div className="flex flex-col items-center gap-2">
@@ -287,7 +283,7 @@ export function GitHubProjects() {
                     <Code2 className="w-5 h-5 text-indigo-500" />
                   </div>
                   <span className="text-xs text-gray-600 dark:text-gray-400">
-                    Language stats
+                    语言统计
                   </span>
                 </div>
                 <div className="flex flex-col items-center gap-2">
@@ -295,7 +291,7 @@ export function GitHubProjects() {
                     <Zap className="w-5 h-5 text-indigo-500" />
                   </div>
                   <span className="text-xs text-gray-600 dark:text-gray-400">
-                    Instant preview
+                    课程仓库预览
                   </span>
                 </div>
               </div>
@@ -324,7 +320,7 @@ export function GitHubProjects() {
             className="inline-flex items-center gap-2 text-indigo-500 hover:text-indigo-600 font-medium transition-colors"
           >
             <Github className="w-5 h-5" />
-            View all on GitHub
+            查看 GitHub
             <ExternalLink className="w-4 h-4" />
           </a>
         </motion.div>
